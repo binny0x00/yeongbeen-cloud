@@ -13,6 +13,7 @@ useSeoMeta({
     <div class="flex min-w-0 flex-col gap-[104px]">
       <AboutSection />
       <ExperienceSection />
+      <ProjectsSection />
     </div>
   </div>
 </template>
