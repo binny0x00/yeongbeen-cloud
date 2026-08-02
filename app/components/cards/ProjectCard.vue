@@ -15,7 +15,7 @@ function formatIndex(index: number) {
 
 <template>
   <article
-    class="flex w-full flex-col items-start gap-6 rounded-lg bg-inverse p-12 text-ink-inverse shadow-float"
+    class="flex w-full flex-col items-start gap-6 rounded-lg bg-inverse p-6 text-ink-inverse shadow-float desktop:p-12"
   >
     <p class="type-mono-sm text-ink-accent">{{ formatIndex(index) }} / {{ category }}</p>
     <h3 class="type-heading-lg w-full">{{ title }}</h3>
