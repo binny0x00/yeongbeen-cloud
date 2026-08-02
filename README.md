@@ -37,6 +37,8 @@ docker compose up -d --build
 curl http://127.0.0.1:3000/api/health
 ```
 
+Pull Request에서는 GitHub Actions가 코드 품질과 Docker 빌드를 검증합니다. `develop`은 Railway staging, `main`은 Railway production으로 자동 배포합니다.
+
 ## 테스트
 
 코드 스타일, 타입, 단위 테스트, 프로덕션 빌드를 한 번에 검증합니다.
@@ -72,6 +74,7 @@ pnpm build
 - [GitHub REST API 연동](./docs/github-api.md)
 - [브라우저 품질 검사](./docs/quality-assurance.md)
 - [Docker 운영 런타임](./docs/docker-runtime.md)
+- [GitHub Actions와 Railway 배포](./docs/ci-cd.md)
 - [Figma 디자인](https://www.figma.com/design/o9H2K729hpqsiD0uz1OozA/)
 
 ## 팀원
