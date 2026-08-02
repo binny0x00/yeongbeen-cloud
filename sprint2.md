@@ -20,16 +20,16 @@ Figma V3를 기준으로 Yeongbeen Cloud를 정적인 카드형 포트폴리오�
 
 ### 핵심 토큰
 
-| 역할 | 값 |
-| --- | --- |
-| Canvas | `#F9F7F1` |
-| Surface | `#FFFFFF` |
-| Ink | `#141412` |
-| Muted ink | `#545247` |
-| Border | `#C7C2B2` |
+| 역할         | 값        |
+| ------------ | --------- |
+| Canvas       | `#F9F7F1` |
+| Surface      | `#FFFFFF` |
+| Ink          | `#141412` |
+| Muted ink    | `#545247` |
+| Border       | `#C7C2B2` |
 | Primary gold | `#A6842E` |
-| Strong gold | `#8A6E20` |
-| Accent pink | `#EB4587` |
+| Strong gold  | `#8A6E20` |
+| Accent pink  | `#EB4587` |
 
 ### 타이포그래피
 
@@ -48,16 +48,16 @@ Figma V3를 기준으로 Yeongbeen Cloud를 정적인 카드형 포트폴리오�
 
 ## 4. 작업 이슈
 
-| 순서 | 이슈 | 권장 브랜치 |
-| --- | --- | --- |
-| 1 | [#46 V3 디자인 토큰과 타이포그래피 동기화](https://github.com/binny0x00/yeongbeen-cloud/issues/46) | `feature/46-s2-design-tokens` |
-| 2 | [#47 Sticky Identity 데스크톱 셸 구현](https://github.com/binny0x00/yeongbeen-cloud/issues/47) | `feature/47-s2-sticky-identity` |
-| 3 | [#51 Hero와 Section Eyebrow 구현](https://github.com/binny0x00/yeongbeen-cloud/issues/51) | `feature/51-s2-hero-eyebrow` |
-| 4 | [#48 Experience Row 구현](https://github.com/binny0x00/yeongbeen-cloud/issues/48) | `feature/48-s2-experience-row` |
-| 5 | [#52 Project Reel Row 구현](https://github.com/binny0x00/yeongbeen-cloud/issues/52) | `feature/52-s2-project-reel` |
-| 6 | [#49 Article Row와 Writing 섹션 구현](https://github.com/binny0x00/yeongbeen-cloud/issues/49) | `feature/49-s2-article-row` |
-| 7 | [#53 Pet Companion 상태와 모션 구현](https://github.com/binny0x00/yeongbeen-cloud/issues/53) | `feature/53-s2-pet-companion` |
-| 8 | [#50 반응형·접근성·시각 품질 검증](https://github.com/binny0x00/yeongbeen-cloud/issues/50) | `test/50-s2-responsive-quality` |
+| 순서 | 이슈                                                                                               | 권장 브랜치                     |
+| ---- | -------------------------------------------------------------------------------------------------- | ------------------------------- |
+| 1    | [#46 V3 디자인 토큰과 타이포그래피 동기화](https://github.com/binny0x00/yeongbeen-cloud/issues/46) | `feature/46-s2-design-tokens`   |
+| 2    | [#47 Sticky Identity 데스크톱 셸 구현](https://github.com/binny0x00/yeongbeen-cloud/issues/47)     | `feature/47-s2-sticky-identity` |
+| 3    | [#51 Hero와 Section Eyebrow 구현](https://github.com/binny0x00/yeongbeen-cloud/issues/51)          | `feature/51-s2-hero-eyebrow`    |
+| 4    | [#48 Experience Row 구현](https://github.com/binny0x00/yeongbeen-cloud/issues/48)                  | `feature/48-s2-experience-row`  |
+| 5    | [#52 Project Reel Row 구현](https://github.com/binny0x00/yeongbeen-cloud/issues/52)                | `feature/52-s2-project-reel`    |
+| 6    | [#49 Article Row와 Writing 섹션 구현](https://github.com/binny0x00/yeongbeen-cloud/issues/49)      | `feature/49-s2-article-row`     |
+| 7    | [#53 Pet Companion 상태와 모션 구현](https://github.com/binny0x00/yeongbeen-cloud/issues/53)       | `feature/53-s2-pet-companion`   |
+| 8    | [#50 반응형·접근성·시각 품질 검증](https://github.com/binny0x00/yeongbeen-cloud/issues/50)         | `test/50-s2-responsive-quality` |
 
 ## 5. 완료 조건
 
