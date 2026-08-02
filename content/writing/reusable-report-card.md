@@ -1,8 +1,10 @@
 ---
 title: React에서 재사용 가능한 리포트 카드 설계하기
+category: Component Design
 description: 정보 우선순위와 공통 API를 먼저 정의해 화면 복잡도를 줄인 과정을 기록합니다.
 status: planned
 order: 1
+publishedAt: 2026-08-02
 tags:
   - React
   - Component Design

@@ -20,6 +20,7 @@ export const projectContentSchema = z.object({
 })
 
 export const writingContentSchema = z.object({
+  category: requiredText,
   description: requiredText,
   order: z.number().int().nonnegative(),
   publishedAt: z.date().optional(),

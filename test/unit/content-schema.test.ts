@@ -14,6 +14,7 @@ const validProject = {
 }
 
 const validWriting = {
+  category: 'COMPONENT DESIGN',
   description: '공통 컴포넌트 설계 기록',
   order: 1,
   readingMinutes: 5,
