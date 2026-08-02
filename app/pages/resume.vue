@@ -15,7 +15,8 @@ useSeoMeta({
         <span class="block">CHOI</span>
       </h1>
       <p class="type-body-lg max-w-[700px] text-ink-muted">
-        재사용 가능한 UI와 안정적인 운영 흐름을 함께 설계하는 Frontend Engineer입니다.
+        사람들의 삶에 직접적인 변화를 만드는 기술에 관심을 두고, 경험에서 발견한 질문을 다음
+        배움으로 확장하는 Frontend Engineer입니다.
       </p>
     </header>
 

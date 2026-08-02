@@ -4,7 +4,7 @@ const { data: articles } = await useAsyncData('recent-writing', () =>
 )
 
 function formatYear(date?: Date | string) {
-  if (!date) return 'SOON'
+  if (!date) return ''
   return String(new Date(date).getUTCFullYear())
 }
 </script>
@@ -35,7 +35,7 @@ function formatYear(date?: Date | string) {
     </ol>
 
     <p v-else class="type-body-sm border-t border-border py-6 text-ink-muted">
-      준비 중인 기술 기록이 곧 공개됩니다.
+      아직 공개된 기술 기록이 없습니다.
     </p>
   </section>
 </template>

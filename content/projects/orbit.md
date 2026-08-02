@@ -1,26 +1,39 @@
 ---
 title: Orbit
-description: 발표 편집, 리허설, 분석 리포트를 하나의 사용자 흐름으로 연결한 팀 프로젝트입니다.
-category: Team Project
+description: 발표자료 생성부터 리허설 코칭·실전 발표 분석까지 지원하는 AI 프레젠테이션 플랫폼입니다.
+category: AI Presentation Platform
 status: completed
 featured: true
-order: 2
-period: 2025
-role: Frontend Engineer
+order: 1
+period: 2026.06 — 2026.07
+role: Full Stack · UI/UX
 publishedAt: 2026-08-02
 tags:
   - React
   - TypeScript
-  - REST API
+  - Konva
+  - NestJS
+  - PostgreSQL
+  - TypeORM
+  - Redis
+  - BullMQ
+  - FastAPI
+  - Zod
+  - Docker
 ---
 
-## 해결한 문제
+## 프로젝트
 
-여러 분석 결과가 한 화면에 섞여 핵심 정보를 파악하기 어렵다는 문제를 발견했습니다. 지표의 우선순위를 다시 정하고 공통 카드와 차트 구조를 적용해 정보 탐색 흐름을 단순화했습니다.
+크래프톤 정글 SW-AI Lab에서 5명이 5주 동안 개발했습니다. 발표자료 생성, 리허설 코칭, 실전 발표 분석을 하나의 흐름으로 연결했으며 발표회와 포스트세션을 진행했습니다.
 
 ## 담당 영역
 
-- 발표 편집기와 리허설 결과 화면 구현
-- 공통 UI 컴포넌트 설계
-- REST API와 비동기 상태 연결
-- 팀 단위 Git 브랜치와 코드 리뷰 참여
+- 서비스 UI/UX 설계
+- React·Konva 기반 슬라이드 편집 기능 구현
+- 편집 명령 모듈화
+- checkpoint·path 기반 편집 데이터 저장 구조 설계
+- 버전 검증 lock을 적용한 편집 데이터 충돌 방지
+
+## 개발 환경
+
+TypeScript, React, Konva, NestJS, PostgreSQL, TypeORM, Redis, BullMQ, FastAPI, Zod, Docker를 사용했고 Codex와 Claude를 개발 보조 도구로 활용했습니다.

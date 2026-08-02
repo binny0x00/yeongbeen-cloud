@@ -7,9 +7,9 @@
     <SectionEyebrow label="OVERVIEW" tone="primary" class="-ml-4" />
 
     <h2 id="about-title" class="type-heading-md text-ink">
-      <span class="desktop:hidden">화면과 그 뒤의 구조를 함께 설계합니다.</span>
+      <span class="desktop:hidden">경험에서 발견한 질문을 다음 배움으로 확장합니다.</span>
       <span class="hidden desktop:inline">
-        사용자에게 보이는 화면과 그 뒤의 구조를 함께 설계합니다.
+        사람들의 삶에 직접적인 변화를 만드는 기술을 탐구합니다.
       </span>
     </h2>
 
@@ -17,24 +17,26 @@
       class="font-sans text-[16px] leading-[26px] text-ink-muted desktop:text-[18px] desktop:leading-[30px]"
     >
       <span class="desktop:hidden">
-        Android와 Flutter를 거쳐 웹 프론트엔드로 확장했습니다. 현재는 컴포넌트 설계, API 상태 관리,
-        성능·접근성, 배포 흐름을 하나의 제품 경험으로 연결하는 데 집중합니다.
+        의공학을 전공하고 Android와 Flutter 앱을 개발하며 기술이 사람의 행동과 경험을 바꾸는 과정을
+        배웠습니다. 이후 운영체제와 네트워크, 웹 서버까지 학습하며 성능과 안정성에 대한 관심을
+        확장했습니다.
       </span>
       <span class="hidden desktop:inline">
-        의공학을 전공하며 기술이 사람의 행동과 경험을 바꾸는 방식에 관심을 가졌습니다. Android와
-        Flutter를 거쳐 웹 프론트엔드로 영역을 확장했고, 현재는 컴포넌트 설계와 API 상태 관리,
-        성능·접근성, 배포 흐름을 하나의 제품 경험으로 연결하는 데 집중하고 있습니다.
+        사람들의 삶의 질을 높이는 기술에 관심을 두고 의공학을 전공했습니다. Android Native와 Flutter
+        앱, 누적 다운로드 10만 회 이상의 서비스 개발을 경험하며 코드가 사용자의 일상에 미치는 영향과
+        책임을 체감했습니다. 이후 크래프톤 정글에서 운영체제와 네트워크, 웹 서버를 직접 구현하며
+        안정적인 서비스를 뒷받침하는 구조를 학습했습니다.
       </span>
     </p>
 
     <aside
-      aria-label="AI 활용 원칙"
+      aria-label="개발자 성장 원칙"
       class="w-full rounded-md bg-accent p-4 text-[var(--color-text-on-accent)] desktop:p-6"
     >
       <p class="type-heading-sm">
-        <span class="desktop:hidden"> AI로 속도를 높이되 품질과 검증은 개발자가 책임집니다. </span>
+        <span class="desktop:hidden"> 경험에서 질문을 발견하고 다음 배움으로 확장합니다. </span>
         <span class="hidden desktop:inline">
-          AI로 속도를 높이되, 구조·품질·검증·배포에 대한 판단은 개발자가 책임집니다.
+          하나의 경험에서 새로운 질문을 발견하고, 그 질문을 다음 배움으로 확장하는 개발자입니다.
         </span>
       </p>
     </aside>

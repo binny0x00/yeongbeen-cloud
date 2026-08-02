@@ -2,7 +2,8 @@
 const route = useRoute()
 const config = useRuntimeConfig()
 const siteName = 'Yeongbeen Cloud'
-const siteDescription = '최영빈의 프로젝트와 기술 기록을 소개하는 개인 개발 공간입니다.'
+const siteDescription =
+  '사람들의 삶에 직접적인 변화를 만드는 기술을 탐구하고, 하나의 경험에서 발견한 질문을 다음 배움으로 확장하는 개발자 최영빈의 포트폴리오입니다.'
 const siteUrl = String(config.public.siteUrl).replace(/\/$/, '')
 const canonicalUrl = computed(() => `${siteUrl}${route.path}`)
 const socialImageUrl = `${siteUrl}/og-image.png`
