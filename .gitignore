@@ -14,6 +14,7 @@ logs
 *.log
 
 # Browser test artifacts
+lighthouse-report.*
 playwright-report
 test-results
 
