@@ -1,0 +1,113 @@
+:root {
+  color-scheme: light;
+
+  /* Primitive colors */
+  --neutral-0: #ffffff;
+  --neutral-50: #f6f6f1;
+  --neutral-300: #d8d8d0;
+  --neutral-600: #66665f;
+  --neutral-950: #0e0e0e;
+  --yellow-500: #ffe45e;
+  --pink-500: #ff6fae;
+  --pink-600: #e94b93;
+
+  /* Semantic colors */
+  --color-bg-primary: var(--neutral-0);
+  --color-bg-secondary: var(--neutral-50);
+  --color-bg-inverse: var(--neutral-950);
+  --color-bg-accent: var(--yellow-500);
+  --color-bg-accent-secondary: var(--pink-500);
+  --color-text-primary: var(--neutral-950);
+  --color-text-secondary: var(--neutral-600);
+  --color-text-inverse: var(--neutral-0);
+  --color-text-on-accent: var(--neutral-950);
+  --color-text-accent: var(--pink-600);
+  --color-border-default: var(--neutral-300);
+  --color-focus-ring: var(--pink-600);
+
+  /* Typography */
+  --font-size-display-lg: 4.5rem;
+  --line-height-display-lg: 4.25rem;
+  --letter-spacing-display-lg: -0.125rem;
+  --font-size-display-md: 3.625rem;
+  --line-height-display-md: 3.75rem;
+  --letter-spacing-display-md: -0.0725rem;
+  --font-size-display-sm: 2.375rem;
+  --line-height-display-sm: 2.625rem;
+  --letter-spacing-display-sm: -0.02375rem;
+  --font-size-heading-lg: 2.5rem;
+  --line-height-heading-lg: 3rem;
+  --letter-spacing-heading-lg: -0.05rem;
+  --font-size-heading-md: 1.75rem;
+  --line-height-heading-md: 2.25rem;
+  --letter-spacing-heading-md: -0.025rem;
+  --font-size-heading-sm: 1.25rem;
+  --line-height-heading-sm: 1.75rem;
+  --font-size-body-lg: 1.125rem;
+  --line-height-body-lg: 1.875rem;
+  --font-size-body-md: 1rem;
+  --line-height-body-md: 1.625rem;
+  --font-size-body-sm: 0.875rem;
+  --line-height-body-sm: 1.375rem;
+  --font-size-label: 0.75rem;
+  --line-height-label: 1rem;
+  --letter-spacing-label: 0.0625rem;
+  --font-size-mono-sm: 0.75rem;
+  --line-height-mono-sm: 1.125rem;
+  --letter-spacing-mono-sm: 0.01875rem;
+
+  /* Spacing */
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+  --spacing-20: 5rem;
+  --spacing-26: 6.5rem;
+
+  /* Shape and elevation */
+  /* Layout */
+  --layout-page-gutter: clamp(1.25rem, 6.1vw, 5.5rem);
+  --layout-content-max: 79rem;
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
+  --color-bg-primary: var(--neutral-950);
+  --color-bg-secondary: #242420;
+  --color-bg-inverse: var(--neutral-0);
+  --color-text-primary: var(--neutral-0);
+  --color-text-secondary: #b8b8ae;
+  --color-text-inverse: var(--neutral-950);
+  --color-border-default: #3c3c37;
+}
+
+@theme inline {
+  --font-display: 'Archivo Black', Arial, sans-serif;
+  --font-sans: 'IBM Plex Sans KR', 'Noto Sans KR', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --color-canvas: var(--color-bg-primary);
+  --color-surface: var(--color-bg-secondary);
+  --color-inverse: var(--color-bg-inverse);
+  --color-accent: var(--color-bg-accent);
+  --color-accent-secondary: var(--color-bg-accent-secondary);
+  --color-ink: var(--color-text-primary);
+  --color-ink-muted: var(--color-text-secondary);
+  --color-ink-inverse: var(--color-text-inverse);
+  --color-ink-accent: var(--color-text-accent);
+  --color-border: var(--color-border-default);
+
+  --radius-sm: 0.25rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1.5rem;
+  --radius-full: 999px;
+  --shadow-float: 0 2px 6px -2px rgb(0 0 0 / 6%), 0 10px 24px -8px rgb(0 0 0 / 12%);
+
+  --breakpoint-mobile: 24.375rem;
+  --breakpoint-tablet: 48rem;
+  --breakpoint-desktop: 90rem;
+}
