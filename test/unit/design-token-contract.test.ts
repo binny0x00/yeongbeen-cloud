@@ -10,6 +10,7 @@ describe('Figma V3 design token contract', () => {
     expect(tokens).toContain('--yellow-500: #a6842e')
     expect(tokens).toContain('--color-bg-primary: var(--neutral-50)')
     expect(tokens).toContain('--color-text-accent-primary: var(--yellow-600)')
+    expect(tokens).toContain('--breakpoint-desktop: 75rem')
   })
 
   it('편집형 디스플레이와 손글씨 보조 서체를 제공한다', () => {
