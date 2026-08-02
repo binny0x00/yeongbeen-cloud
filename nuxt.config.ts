@@ -12,6 +12,11 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   devtools: { enabled: true },
   modules: ['@nuxt/content', '@nuxt/eslint'],
+  runtimeConfig: {
+    githubOwner: 'binny0x00',
+    githubRepositories: 'yeongbeen-cloud',
+    githubToken: '',
+  },
   typescript: {
     strict: true,
   },
