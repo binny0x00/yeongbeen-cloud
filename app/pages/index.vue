@@ -6,8 +6,5 @@ useSeoMeta({
 </script>
 
 <template>
-  <main>
-    <h1>Yeongbeen Cloud</h1>
-    <p>프로젝트와 기술 기록을 위한 개인 개발 공간을 준비하고 있습니다.</p>
-  </main>
+  <HeroSection />
 </template>
