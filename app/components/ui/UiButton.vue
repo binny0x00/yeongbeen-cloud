@@ -15,7 +15,7 @@ const props = withDefaults(
 )
 
 const buttonClasses = computed(() => [
-  'type-label inline-flex min-h-8 cursor-pointer items-center justify-center rounded-sm border px-4 py-2 transition-colors duration-150',
+  'type-label inline-flex min-h-8 cursor-pointer items-center justify-center rounded-sm border px-4 py-2 transition-[color,background-color,border-color,transform] duration-200 ease-out motion-safe:hover:-translate-y-0.5 motion-safe:focus-visible:-translate-y-0.5',
   props.disabled
     ? [
         'pointer-events-none cursor-not-allowed bg-surface text-ink-muted',

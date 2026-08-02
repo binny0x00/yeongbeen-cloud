@@ -10,5 +10,6 @@ describe('HeroSection', () => {
     expect(wrapper.text()).not.toContain('01 /')
     expect(wrapper.get('section').classes()).not.toContain('bg-inverse')
     expect(wrapper.get('a[href="#projects"]').text()).toContain('VIEW PROJECTS')
+    expect(wrapper.findAll('[data-hero-item]').length).toBeGreaterThanOrEqual(8)
   })
 })

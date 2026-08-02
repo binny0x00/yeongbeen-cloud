@@ -1,4 +1,7 @@
 <script setup lang="ts">
+const contentRail = useTemplateRef<HTMLElement>('contentRail')
+useRevealMotion(contentRail)
+
 useSeoMeta({
   title: 'Yeongbeen Cloud',
   description:
@@ -7,11 +10,21 @@ useSeoMeta({
 </script>
 
 <template>
-  <div class="flex w-full max-w-[856px] flex-col gap-[104px]">
-    <HeroSection />
-    <ExperienceSection />
-    <ProjectsSection />
-    <WritingSection />
-    <ContactFooter />
+  <div ref="contentRail" class="flex w-full max-w-[856px] flex-col gap-[104px]">
+    <div class="w-full" data-reveal data-reveal-variant="hero">
+      <HeroSection />
+    </div>
+    <div class="w-full" data-reveal>
+      <ExperienceSection />
+    </div>
+    <div class="w-full" data-reveal>
+      <ProjectsSection />
+    </div>
+    <div class="w-full" data-reveal>
+      <WritingSection />
+    </div>
+    <div class="w-full" data-reveal>
+      <ContactFooter />
+    </div>
   </div>
 </template>

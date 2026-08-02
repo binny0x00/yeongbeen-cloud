@@ -17,25 +17,46 @@ withDefaults(
     aria-labelledby="hero-title"
     class="flex min-h-[720px] w-full scroll-mt-8 flex-col items-start gap-6 desktop:min-h-[900px]"
   >
-    <SectionEyebrow label="OVERVIEW" tone="primary" class="-ml-4" />
+    <SectionEyebrow
+      label="OVERVIEW"
+      tone="primary"
+      class="-ml-4"
+      data-hero-item
+      style="--hero-order: 0"
+    />
 
-    <p class="type-mono-sm text-ink-muted desktop:hidden">YEONGBEEN CHOI · FRONTEND ENGINEER</p>
+    <p class="type-mono-sm text-ink-muted desktop:hidden" data-hero-item style="--hero-order: 1">
+      YEONGBEEN CHOI · FRONTEND ENGINEER
+    </p>
 
     <h1
       id="hero-title"
       class="font-display text-[var(--font-size-display-mobile)] leading-[var(--line-height-display-mobile)] font-bold tracking-[var(--letter-spacing-display-mobile)] text-ink desktop:text-[clamp(4rem,5.7vw,5.125rem)] desktop:leading-[0.93] desktop:tracking-[var(--letter-spacing-display-hero)]"
     >
-      <span class="block">I BUILD INTERFACES</span>
-      <span class="block">THAT FEEL CLEAR</span>
-      <span class="block">AND SHIP RELIABLY.</span>
+      <span class="block overflow-hidden">
+        <span class="block" data-hero-item style="--hero-order: 1">I BUILD INTERFACES</span>
+      </span>
+      <span class="block overflow-hidden">
+        <span class="block" data-hero-item style="--hero-order: 2">THAT FEEL CLEAR</span>
+      </span>
+      <span class="block overflow-hidden">
+        <span class="block" data-hero-item style="--hero-order: 3">AND SHIP RELIABLY.</span>
+      </span>
     </h1>
 
-    <p aria-hidden="true" class="type-handwritten rotate-2 text-ink-accent">
+    <p
+      aria-hidden="true"
+      class="type-handwritten rotate-2 text-ink-accent"
+      data-hero-item
+      style="--hero-order: 4"
+    >
       design × engineering × operations
     </p>
 
     <div
       class="flex max-w-[856px] flex-col gap-5 pt-6 font-sans text-[16px] leading-7 text-ink-muted desktop:text-[18px] desktop:leading-[31px]"
+      data-hero-item
+      style="--hero-order: 5"
     >
       <p>
         사람들의 삶의 질을 높이는 기술에 관심을 두고 의공학을 전공하며, 일상에 직접적인 변화를
@@ -53,13 +74,17 @@ withDefaults(
       </p>
     </div>
 
-    <div class="flex flex-wrap items-center gap-x-5 gap-y-3 pt-2">
+    <div
+      class="flex flex-wrap items-center gap-x-5 gap-y-3 pt-2"
+      data-hero-item
+      style="--hero-order: 6"
+    >
       <UiButton to="#projects">VIEW PROJECTS</UiButton>
       <UiTextLink :to="githubUrl" external>GITHUB</UiTextLink>
       <UiTextLink :to="resumeUrl" show-arrow>RÉSUMÉ</UiTextLink>
     </div>
 
-    <p class="type-label pt-4 text-ink">
+    <p class="type-label pt-4 text-ink" data-hero-item style="--hero-order: 7">
       REACT · TYPESCRIPT · NUXT · VUE · DOCKER · GITHUB ACTIONS · RAILWAY
     </p>
   </section>

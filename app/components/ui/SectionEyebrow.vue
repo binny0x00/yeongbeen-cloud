@@ -19,8 +19,9 @@ const isPrimary = computed(() => props.tone === 'primary')
   <div class="flex items-center gap-3 px-4 py-2" :data-tone="tone" :aria-label="`${label} 섹션`">
     <span
       aria-hidden="true"
-      class="h-0.5 w-6 rounded-full"
+      class="h-0.5 w-6 origin-left rounded-full transition-transform duration-500"
       :class="isPrimary ? 'bg-accent' : 'bg-border'"
+      data-motion-line
     />
     <p
       class="type-label whitespace-nowrap"
