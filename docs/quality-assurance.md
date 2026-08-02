@@ -2,7 +2,7 @@
 
 ## Playwright
 
-홈 화면의 핵심 콘텐츠, 390px·1440px 반응형 레이아웃, 가로 overflow, WCAG A·AA 자동 검사를 Chromium에서 확인한다.
+홈 화면의 핵심 콘텐츠, 390px·768px·1200px·1440px 반응형 레이아웃, 가로 overflow, 키보드 탐색, reduced motion, WCAG A·AA 자동 검사를 Chromium에서 확인한다.
 
 ```bash
 pnpm exec playwright install chromium
@@ -23,7 +23,19 @@ axe 자동 검사는 모든 접근성 문제를 발견하지 못한다. 키보�
 
 - Performance: 90 이상
 - Accessibility: 95 이상
-- Best Practices와 SEO: 회귀 여부 확인
+- Best Practices: 95 이상
+- SEO: 95 이상
+
+### Sprint 2 기준선
+
+| 항목           | Mobile | Desktop | 판정 기준                   |
+| -------------- | -----: | ------: | --------------------------- |
+| Performance    |     90 |      90 | 3회 측정 중앙값             |
+| Accessibility  |     95 |      95 | axe WCAG A·AA 위반 0건 병행 |
+| Best Practices |     95 |      95 | 이전 배포 대비 하락 없음    |
+| SEO            |     95 |      95 | 주요 메타데이터 누락 없음   |
+
+Sprint 2 integration branch를 `develop`에 병합한 뒤 Railway staging URL에서 측정하고, 측정 일시와 commit SHA를 해당 PR에 기록한다.
 
 ### 측정 환경
 
