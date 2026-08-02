@@ -1,4 +1,5 @@
 import { z } from 'zod/v4'
+import { getYouTubeVideoId } from '../utils/youtube'
 
 const requiredText = z.string().min(1)
 const tags = z.array(requiredText).min(1)
@@ -17,6 +18,11 @@ export const projectContentSchema = z.object({
   title: requiredText,
   updatedAt: z.date().optional(),
   website: z.string().url().optional(),
+  youtube: z
+    .string()
+    .url()
+    .refine(value => getYouTubeVideoId(value) !== null, '지원되는 YouTube URL이어야 합니다')
+    .optional(),
 })
 
 export const writingContentSchema = z.object({

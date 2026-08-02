@@ -40,6 +40,22 @@ describe('projectContentSchema', () => {
 
     expect(result.success).toBe(false)
   })
+
+  it('지원되는 YouTube URL만 허용한다', () => {
+    expect(
+      projectContentSchema.safeParse({
+        ...validProject,
+        youtube: 'https://youtu.be/dQw4w9WgXcQ',
+      }).success,
+    ).toBe(true)
+
+    expect(
+      projectContentSchema.safeParse({
+        ...validProject,
+        youtube: 'https://example.com/dQw4w9WgXcQ',
+      }).success,
+    ).toBe(false)
+  })
 })
 
 describe('writingContentSchema', () => {

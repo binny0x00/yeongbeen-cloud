@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import ProjectMediaActions from '../../components/projects/ProjectMediaActions.vue'
+
 const route = useRoute()
 const { data: project } = await useAsyncData(`project-${route.path}`, () =>
   queryCollection('projects').path(route.path).first(),
@@ -25,6 +27,13 @@ useSeoMeta({
       <h1 class="type-display-lg">{{ project.title }}</h1>
       <p class="type-body-lg max-w-[720px] text-ink-muted">{{ project.description }}</p>
       <p class="type-label text-ink-accent">{{ project.tags.join(' · ') }}</p>
+
+      <ProjectMediaActions
+        :repository="project.repository"
+        :title="project.title"
+        :website="project.website"
+        :youtube="project.youtube"
+      />
     </header>
 
     <ContentRenderer :value="project" class="content-body" />

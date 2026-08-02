@@ -35,8 +35,11 @@ tags:
   - Nuxt
 repository: https://github.com/owner/repository # 선택
 website: https://example.com # 선택
+youtube: https://youtu.be/dQw4w9WgXcQ # 선택
 ---
 ```
+
+`repository`와 `website`가 있으면 프로젝트 상세 화면에 각각 GitHub와 외부 사이트 아이콘이 표시됩니다. `youtube`에는 `youtube.com/watch`, `youtu.be`, `youtube.com/embed`, `youtube.com/shorts` 형식의 URL을 사용할 수 있으며, 입력한 영상은 상세 화면의 privacy-enhanced 플레이어에서 재생됩니다.
 
 ## 기술 글 frontmatter
 

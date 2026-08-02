@@ -48,6 +48,19 @@ test('프로젝트 탐색과 이메일 연락 핵심 흐름이 동작한다', as
   )
 })
 
+test('프로젝트 상세에서 GitHub 저장소 아이콘 링크를 제공한다', async ({ page }) => {
+  await page.goto('/projects/yeongbeen-cloud', { waitUntil: 'domcontentloaded' })
+
+  const repositoryLink = page.getByRole('link', {
+    name: 'Yeongbeen Cloud GitHub 저장소 새 창에서 열기',
+  })
+  await expect(repositoryLink).toHaveAttribute(
+    'href',
+    'https://github.com/binny0x00/yeongbeen-cloud',
+  )
+  await expect(repositoryLink).toHaveAttribute('target', '_blank')
+})
+
 test('키보드로 본문 건너뛰기와 주요 링크를 탐색할 수 있다', async ({ page }) => {
   await page.keyboard.press('Tab')
   const skipLink = page.getByRole('link', { name: '본문으로 이동' })
