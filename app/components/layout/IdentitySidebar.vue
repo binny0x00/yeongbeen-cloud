@@ -67,9 +67,11 @@ onBeforeUnmount(() => sectionObserver?.disconnect())
         <p class="type-body-md max-w-[300px] text-ink-muted">
           재사용 가능한 UI와 안정적인 운영 흐름을 함께 설계합니다.
         </p>
+
+        <PetCompanion />
       </div>
 
-      <div class="my-10 h-0.5 w-[88px] bg-accent" aria-hidden="true" />
+      <div class="my-7 h-0.5 w-[88px] bg-accent" aria-hidden="true" />
 
       <nav aria-label="페이지 섹션" class="flex flex-col">
         <a
