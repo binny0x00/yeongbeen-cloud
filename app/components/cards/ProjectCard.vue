@@ -1,58 +1,60 @@
 <script setup lang="ts">
-import type { GitHubRepositorySummary } from '#shared/types/github'
-
-withDefaults(
+const props = withDefaults(
   defineProps<{
     category: string
     description: string
+    external?: boolean
     index: number
-    repository?: GitHubRepositorySummary
     tags: string[]
     title: string
+    titleLines?: string[]
     to: string
   }>(),
   {
-    repository: undefined,
+    external: false,
+    titleLines: undefined,
   },
 )
 
-function formatIndex(index: number) {
-  return String(index).padStart(2, '0')
-}
+const NuxtLink = resolveComponent('NuxtLink')
+const linkComponent = computed(() => (props.external ? 'a' : NuxtLink))
+
+const formattedIndex = computed(() => String(props.index).padStart(2, '0'))
+const displayedTitleLines = computed(() => props.titleLines ?? [props.title])
 </script>
 
 <template>
-  <article
-    class="flex w-full flex-col items-start gap-6 rounded-lg bg-inverse p-6 text-ink-inverse shadow-float desktop:p-12"
-  >
-    <p class="type-mono-sm text-ink-accent">{{ formatIndex(index) }} / {{ category }}</p>
-    <h3 class="type-heading-lg w-full">{{ title }}</h3>
-    <p class="type-body-lg w-full">{{ description }}</p>
-    <ul class="flex flex-wrap gap-2" aria-label="사용 기술">
-      <li v-for="tag in tags" :key="tag">
-        <UiTag>{{ tag }}</UiTag>
-      </li>
-    </ul>
-    <dl
-      v-if="repository"
-      class="type-mono-sm flex w-full flex-wrap gap-x-5 gap-y-2 border-t border-white/20 pt-4 text-ink-inverse"
-      aria-label="GitHub 저장소 정보"
+  <article class="w-full">
+    <component
+      :is="linkComponent"
+      :aria-label="`${title} 프로젝트 보기${external ? ', 새 창' : ''}`"
+      class="group grid w-full grid-cols-1 gap-4 border-t-2 border-stroke-strong py-7 no-underline transition-colors duration-200 hover:bg-surface/60 tablet:grid-cols-[4rem_minmax(12rem,18.75rem)_1fr] tablet:gap-6"
+      :href="external ? to : undefined"
+      :rel="external ? 'noreferrer' : undefined"
+      :target="external ? '_blank' : undefined"
+      :to="external ? undefined : to"
     >
-      <div class="flex gap-1">
-        <dt>STARS</dt>
-        <dd>{{ repository.stars }}</dd>
+      <p class="type-heading-sm text-ink-accent-primary" aria-hidden="true">
+        {{ formattedIndex }}
+      </p>
+
+      <div class="min-w-0" data-project-media-slot>
+        <h3
+          class="type-display-identity transition-transform duration-200 motion-safe:group-hover:translate-x-1"
+        >
+          <span v-for="line in displayedTitleLines" :key="line" class="block">{{ line }}</span>
+        </h3>
       </div>
-      <div class="flex gap-1">
-        <dt>FORKS</dt>
-        <dd>{{ repository.forks }}</dd>
+
+      <div class="flex min-w-0 flex-col gap-3">
+        <p class="type-mono-sm text-ink-muted">{{ category }}</p>
+        <p class="type-body-md text-ink-muted">{{ description }}</p>
+        <p
+          class="type-label text-ink-accent transition-colors duration-200 group-hover:text-ink-accent-primary"
+        >
+          {{ tags.join(' · ') }}&nbsp; ↗
+        </p>
       </div>
-      <div v-if="repository.language" class="flex gap-1">
-        <dt>LANGUAGE</dt>
-        <dd>{{ repository.language }}</dd>
-      </div>
-    </dl>
-    <NuxtLink :to="to" class="type-label underline-offset-4 hover:text-ink-accent hover:underline">
-      VIEW CASE STUDY&nbsp; ↗
-    </NuxtLink>
+    </component>
   </article>
 </template>
