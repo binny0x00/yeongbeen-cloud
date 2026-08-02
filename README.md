@@ -30,6 +30,13 @@ pnpm build
 pnpm preview
 ```
 
+Docker Compose로 production 런타임을 실행할 수 있습니다.
+
+```bash
+docker compose up -d --build
+curl http://127.0.0.1:3000/api/health
+```
+
 ## 테스트
 
 코드 스타일, 타입, 단위 테스트, 프로덕션 빌드를 한 번에 검증합니다.
@@ -64,6 +71,7 @@ pnpm build
 - [콘텐츠 작성 가이드](./docs/content-authoring.md)
 - [GitHub REST API 연동](./docs/github-api.md)
 - [브라우저 품질 검사](./docs/quality-assurance.md)
+- [Docker 운영 런타임](./docs/docker-runtime.md)
 - [Figma 디자인](https://www.figma.com/design/o9H2K729hpqsiD0uz1OozA/)
 
 ## 팀원
