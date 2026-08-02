@@ -32,9 +32,18 @@ pnpm preview
 
 ## 테스트
 
-테스트와 정적 분석 명령은 관련 Sprint 1 작업에서 추가합니다. 현재는 프로덕션 빌드로 기본 동작을 검증합니다.
+코드 스타일, 타입, 프로덕션 빌드를 한 번에 검증합니다.
 
 ```bash
+pnpm verify
+```
+
+개별 검사는 다음 명령으로 실행할 수 있습니다.
+
+```bash
+pnpm lint
+pnpm format:check
+pnpm typecheck
 pnpm build
 ```
 

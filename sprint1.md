@@ -31,26 +31,26 @@ Sprint 1이 끝나면 방문자는 데스크톱과 모바일에서 다음 내용
 
 ## 3. 기술 스택
 
-| 영역 | 기술 | 선택 목적 |
-| --- | --- | --- |
-| Framework | Nuxt 4, Vue 3 | SSR·SSG·서버 API를 하나의 프로젝트에서 구성 |
-| Language | TypeScript | 컴포넌트와 API 데이터의 타입 안정성 확보 |
-| Vue 방식 | Composition API, `<script setup>` | 간결하고 재사용 가능한 로직 구성 |
-| Package Manager | pnpm | 빠른 설치와 엄격한 의존성 관리 |
-| Styling | Tailwind CSS + CSS Variables | 빠른 반응형 구현과 Figma 디자인 토큰 연결 |
-| Content | Nuxt Content, Markdown | 프로젝트와 기술 글을 코드 기반으로 관리 |
-| Server API | Nuxt/Nitro Server Routes | REST API와 서버 로직 구현 |
-| State | Vue composables 우선 | 불필요한 전역 상태를 줄이고 필요 시 Pinia 도입 |
-| Unit Test | Vitest, Vue Test Utils | 컴포넌트와 유틸리티 동작 검증 |
-| E2E Test | Playwright | 주요 사용자 흐름과 반응형 화면 검증 |
-| Accessibility | axe-core, semantic HTML | 키보드 탐색과 접근성 오류 점검 |
-| Code Quality | ESLint, Prettier, vue-tsc | 코드 스타일, 타입, 빌드 오류 자동 검사 |
-| Container | Docker, Docker Compose | 개발·CI·운영 환경에서 동일한 Nuxt 실행 방식 유지 |
-| CI/CD | GitHub Actions + Railway CLI | PR 품질 검증과 main 브랜치의 Docker 배포 자동화 |
-| Production | Railway | Nuxt SSR 애플리케이션을 Docker 컨테이너로 운영 |
-| Database | Railway PostgreSQL | 이후 조회수·방명록·관리 기능을 위한 동적 데이터 저장 |
-| DNS/CDN/HTTPS | 가비아 + Cloudflare | 도메인 소유는 가비아에서 유지하고 DNS·프록시·HTTPS·DNSSEC 관리 |
-| Analytics | Cloudflare Web Analytics | 개인정보 부담이 적은 기본 방문 지표 확인 |
+| 영역            | 기술                              | 선택 목적                                                      |
+| --------------- | --------------------------------- | -------------------------------------------------------------- |
+| Framework       | Nuxt 4, Vue 3                     | SSR·SSG·서버 API를 하나의 프로젝트에서 구성                    |
+| Language        | TypeScript                        | 컴포넌트와 API 데이터의 타입 안정성 확보                       |
+| Vue 방식        | Composition API, `<script setup>` | 간결하고 재사용 가능한 로직 구성                               |
+| Package Manager | pnpm                              | 빠른 설치와 엄격한 의존성 관리                                 |
+| Styling         | Tailwind CSS + CSS Variables      | 빠른 반응형 구현과 Figma 디자인 토큰 연결                      |
+| Content         | Nuxt Content, Markdown            | 프로젝트와 기술 글을 코드 기반으로 관리                        |
+| Server API      | Nuxt/Nitro Server Routes          | REST API와 서버 로직 구현                                      |
+| State           | Vue composables 우선              | 불필요한 전역 상태를 줄이고 필요 시 Pinia 도입                 |
+| Unit Test       | Vitest, Vue Test Utils            | 컴포넌트와 유틸리티 동작 검증                                  |
+| E2E Test        | Playwright                        | 주요 사용자 흐름과 반응형 화면 검증                            |
+| Accessibility   | axe-core, semantic HTML           | 키보드 탐색과 접근성 오류 점검                                 |
+| Code Quality    | ESLint, Prettier, vue-tsc         | 코드 스타일, 타입, 빌드 오류 자동 검사                         |
+| Container       | Docker, Docker Compose            | 개발·CI·운영 환경에서 동일한 Nuxt 실행 방식 유지               |
+| CI/CD           | GitHub Actions + Railway CLI      | PR 품질 검증과 main 브랜치의 Docker 배포 자동화                |
+| Production      | Railway                           | Nuxt SSR 애플리케이션을 Docker 컨테이너로 운영                 |
+| Database        | Railway PostgreSQL                | 이후 조회수·방명록·관리 기능을 위한 동적 데이터 저장           |
+| DNS/CDN/HTTPS   | 가비아 + Cloudflare               | 도메인 소유는 가비아에서 유지하고 DNS·프록시·HTTPS·DNSSEC 관리 |
+| Analytics       | Cloudflare Web Analytics          | 개인정보 부담이 적은 기본 방문 지표 확인                       |
 
 ### 기술 선택 원칙
 
