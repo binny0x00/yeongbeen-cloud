@@ -34,8 +34,18 @@ function formatYear(date?: Date | string) {
       </li>
     </ol>
 
-    <p v-else class="type-body-sm border-t border-border py-6 text-ink-muted">
-      아직 공개된 기술 기록이 없습니다.
-    </p>
+    <div
+      v-else
+      class="flex w-full flex-col items-start gap-3 border-y border-border py-7"
+      data-writing-empty
+    >
+      <p class="type-label text-ink-accent-primary">PUBLISHING SOON</p>
+      <p class="type-heading-sm text-ink">첫 기술 기록을 준비하고 있습니다.</p>
+      <p class="type-body-sm max-w-[620px] text-ink-muted">
+        프로젝트에서 내린 기술적 판단과 운영 과정은 정리되는 순서대로 공개합니다. 지금은 완료된
+        프로젝트의 문제 해결 과정을 먼저 확인할 수 있습니다.
+      </p>
+      <UiTextLink to="#projects" :show-arrow="true">PROJECTS 먼저 보기</UiTextLink>
+    </div>
   </section>
 </template>

@@ -6,6 +6,8 @@ const project = {
   category: 'FRONTEND ENGINEERING',
   description: '복잡한 정보를 명확한 화면으로 정리했습니다.',
   index: 1,
+  outcome: 'production 환경에서 안정적으로 운영 중',
+  outcomeLabel: 'OPERATIONS',
   tags: ['NUXT', 'TYPESCRIPT'],
   title: 'YEONGBEEN.CLOUD',
   to: '/projects/yeongbeen-cloud',
@@ -19,6 +21,8 @@ describe('ProjectCard', () => {
     expect(wrapper.get('h3').text()).toContain('YEONGBEEN.CLOUD')
     expect(wrapper.text()).toContain('01')
     expect(wrapper.text()).toContain('NUXT · TYPESCRIPT')
+    expect(wrapper.get('[data-project-outcome]').text()).toContain('OPERATIONS')
+    expect(wrapper.text()).toContain('CASE STUDY')
     expect(wrapper.find('[data-project-media-slot]').exists()).toBe(true)
   })
 

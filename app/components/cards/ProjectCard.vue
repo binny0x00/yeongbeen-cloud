@@ -5,6 +5,8 @@ const props = withDefaults(
     description: string
     external?: boolean
     index: number
+    outcome: string
+    outcomeLabel: string
     tags: string[]
     title: string
     titleLines?: string[]
@@ -54,11 +56,20 @@ const displayedTitleLines = computed(() => props.titleLines ?? [props.title])
       <div class="flex min-w-0 flex-col gap-3">
         <p class="type-mono-sm text-ink-muted">{{ category }}</p>
         <p class="type-body-md text-ink-muted">{{ description }}</p>
-        <p
-          class="type-label text-ink-accent transition-[color,transform] duration-300 ease-out group-hover:text-ink-accent-primary group-focus-visible:text-ink-accent-primary motion-safe:group-hover:translate-x-1 motion-safe:group-focus-visible:translate-x-1"
-        >
-          {{ tags.join(' · ') }}&nbsp; ↗
-        </p>
+
+        <div class="flex items-start gap-3 border-l-2 border-accent pl-3" data-project-outcome>
+          <p class="type-label shrink-0 text-ink-accent-primary">{{ outcomeLabel }}</p>
+          <p class="type-body-sm font-semibold text-ink">{{ outcome }}</p>
+        </div>
+
+        <div class="flex flex-wrap items-end justify-between gap-x-4 gap-y-2 pt-1">
+          <p class="type-label max-w-[34rem] text-ink-accent">{{ tags.join(' · ') }}</p>
+          <p
+            class="type-label whitespace-nowrap text-ink transition-[color,transform] duration-300 ease-out group-hover:text-ink-accent-primary group-focus-visible:text-ink-accent-primary motion-safe:group-hover:translate-x-1 motion-safe:group-focus-visible:translate-x-1"
+          >
+            CASE STUDY&nbsp; ↗
+          </p>
+        </div>
       </div>
     </component>
   </article>
