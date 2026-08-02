@@ -13,6 +13,11 @@ node_modules
 logs
 *.log
 
+# Browser test artifacts
+lighthouse-report.*
+playwright-report
+test-results
+
 # Misc
 .DS_Store
 .fleet
