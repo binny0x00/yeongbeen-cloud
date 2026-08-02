@@ -9,6 +9,12 @@ withDefaults(
     resumeUrl: '/resume',
   },
 )
+
+const proofPoints = [
+  { label: '참여 서비스 누적 다운로드', value: '100K+' },
+  { label: '프로젝트 수상', value: '3 AWARDS' },
+  { label: '운영 환경', value: 'CI/CD · RAILWAY' },
+] as const
 </script>
 
 <template>
@@ -53,10 +59,35 @@ withDefaults(
       design × engineering × operations
     </p>
 
-    <div
-      class="flex max-w-[856px] flex-col gap-5 pt-6 font-sans text-[16px] leading-7 text-ink-muted desktop:text-[18px] desktop:leading-[31px]"
+    <dl
+      class="grid w-full grid-cols-1 border-y border-border tablet:grid-cols-3"
       data-hero-item
       style="--hero-order: 5"
+      aria-label="핵심 경험"
+    >
+      <div
+        v-for="(proof, index) in proofPoints"
+        :key="proof.label"
+        class="flex items-center justify-between gap-4 border-border py-3 tablet:flex-col tablet:items-start tablet:justify-start tablet:py-4"
+        :class="index > 0 && 'border-t tablet:border-t-0 tablet:border-l tablet:pl-5'"
+      >
+        <dt class="type-label text-ink-muted">{{ proof.label }}</dt>
+        <dd class="font-display text-[1.75rem] leading-none font-bold tracking-[-0.02em] text-ink">
+          {{ proof.value }}
+        </dd>
+      </div>
+    </dl>
+
+    <div class="flex flex-wrap items-center gap-x-5 gap-y-3" data-hero-item style="--hero-order: 6">
+      <UiButton to="#projects">VIEW PROJECTS</UiButton>
+      <UiTextLink :to="githubUrl" external>GITHUB</UiTextLink>
+      <UiTextLink :to="resumeUrl" show-arrow>RÉSUMÉ</UiTextLink>
+    </div>
+
+    <div
+      class="flex max-w-[856px] flex-col gap-5 pt-2 font-sans text-[16px] leading-7 text-ink-muted desktop:text-[17px] desktop:leading-[29px]"
+      data-hero-item
+      style="--hero-order: 7"
     >
       <p>
         사람들의 삶의 질을 높이는 기술에 관심을 두고 의공학을 전공하며, 일상에 직접적인 변화를
@@ -74,17 +105,7 @@ withDefaults(
       </p>
     </div>
 
-    <div
-      class="flex flex-wrap items-center gap-x-5 gap-y-3 pt-2"
-      data-hero-item
-      style="--hero-order: 6"
-    >
-      <UiButton to="#projects">VIEW PROJECTS</UiButton>
-      <UiTextLink :to="githubUrl" external>GITHUB</UiTextLink>
-      <UiTextLink :to="resumeUrl" show-arrow>RÉSUMÉ</UiTextLink>
-    </div>
-
-    <p class="type-label pt-4 text-ink" data-hero-item style="--hero-order: 7">
+    <p class="type-label pt-2 text-ink" data-hero-item style="--hero-order: 8">
       REACT · TYPESCRIPT · NUXT · VUE · DOCKER · GITHUB ACTIONS · RAILWAY
     </p>
   </section>

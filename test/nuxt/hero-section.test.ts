@@ -10,6 +10,8 @@ describe('HeroSection', () => {
     expect(wrapper.text()).not.toContain('01 /')
     expect(wrapper.get('section').classes()).not.toContain('bg-inverse')
     expect(wrapper.get('a[href="#projects"]').text()).toContain('VIEW PROJECTS')
+    expect(wrapper.get('dl[aria-label="핵심 경험"]').text()).toContain('100K+')
+    expect(wrapper.get('dl[aria-label="핵심 경험"]').text()).toContain('CI/CD · RAILWAY')
     expect(wrapper.findAll('[data-hero-item]').length).toBeGreaterThanOrEqual(8)
   })
 })

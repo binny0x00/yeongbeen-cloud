@@ -5,6 +5,8 @@ const projects = [
     description:
       'React·Konva 기반 슬라이드 편집 기능과 편집 명령을 모듈화하고, checkpoint·path 저장 구조와 버전 검증 lock으로 편집 데이터 충돌을 방지했습니다.',
     index: 1,
+    outcome: '버전 검증 lock으로 편집 데이터 충돌 방지',
+    outcomeLabel: 'ENGINEERING',
     tags: ['REACT', 'TYPESCRIPT', 'KONVA', 'NESTJS', 'REDIS', 'FASTAPI'],
     title: 'ORBIT',
     to: '/projects/orbit',
@@ -14,6 +16,8 @@ const projects = [
     description:
       '개발 기록과 프로젝트를 통합한 개인 플랫폼입니다. AI 보조 개발을 활용하되 Docker 빌드, CI/CD, Railway와 Cloudflare 운영까지 직접 검증합니다.',
     index: 2,
+    outcome: 'CI/CD · Railway · Cloudflare production 운영',
+    outcomeLabel: 'OPERATIONS',
     tags: ['VUE', 'NUXT', 'TYPESCRIPT', 'DOCKER', 'RAILWAY', 'CLOUDFLARE'],
     title: 'YEONGBEEN.CLOUD',
     titleLines: ['YEONGBEEN', '.CLOUD'],
@@ -24,6 +28,8 @@ const projects = [
     description:
       '잃어버린 반려동물 제보와 발견 정보를 쉽게 공유하는 위치 기반 서비스를 개발해 카카오테크캠퍼스 2기 팀 프로젝트 최우수상을 수상했습니다.',
     index: 3,
+    outcome: '카카오테크캠퍼스 2기 팀 프로젝트 최우수상',
+    outcomeLabel: 'AWARD',
     tags: ['KOTLIN', 'COROUTINE', 'HILT', 'ROOM', 'RETROFIT', 'KAKAO MAP SDK'],
     title: 'LOST PET SERVICE',
     titleLines: ['LOST PET', 'SERVICE'],
@@ -34,6 +40,8 @@ const projects = [
     description:
       '계약 요청·승인·지갑 서명·결제 API를 구축하고, ethers로 스마트컨트랙트 상태와 PostgreSQL 계약 데이터를 연결한 부동산 계약 시스템입니다.',
     index: 4,
+    outcome: '교내 2025 하계 NCCCOSS 경진대회 우수상',
+    outcomeLabel: 'AWARD',
     tags: ['TYPESCRIPT', 'EXPRESS', 'TYPEORM', 'POSTGRESQL', 'ETHERS', 'STRIPE', 'DOCKER'],
     title: 'ANB',
     to: '/projects/anb',
@@ -43,6 +51,8 @@ const projects = [
     description:
       '금융 멀티 시뮬레이션 플랫폼의 프론트엔드를 개발해 시즌톤 본선에 진출하고 Figma 특별상을 수상했습니다.',
     index: 5,
+    outcome: '시즌톤 본선 진출 · Figma 특별상',
+    outcomeLabel: 'AWARD',
     tags: ['FLUTTER', 'RIVERPOD', 'FREEZED', 'GOROUTER', 'FIREBASE', 'LOTTIE'],
     title: 'FINANCE SIMULATOR',
     titleLines: ['FINANCE', 'SIMULATOR'],
@@ -53,6 +63,8 @@ const projects = [
     description:
       'AI 기반 다크투어리즘 가이드 앱을 개발해 APAC Solution Challenge 2025에 출품하고 호남 ICT 지원사업에 선정됐습니다.',
     index: 6,
+    outcome: '호남 ICT 지원사업 선정',
+    outcomeLabel: 'SELECTION',
     tags: ['FLUTTER', 'DART', 'FIREBASE AUTH', 'CRASHLYTICS'],
     title: 'DARK TOUR GUIDE',
     titleLines: ['DARK TOUR', 'GUIDE'],
@@ -83,6 +95,8 @@ const projects = [
         :category="project.category"
         :description="project.description"
         :index="project.index"
+        :outcome="project.outcome"
+        :outcome-label="project.outcomeLabel"
         :tags="project.tags"
         :title="project.title"
         :title-lines="project.titleLines"

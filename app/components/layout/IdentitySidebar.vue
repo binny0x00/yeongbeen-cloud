@@ -48,10 +48,10 @@ onBeforeUnmount(() => sectionObserver?.disconnect())
 <template>
   <aside
     aria-label="개발자 정보 및 섹션 탐색"
-    class="sticky top-0 hidden h-dvh w-[440px] flex-col overflow-y-auto px-12 py-[72px] desktop:flex desktop:pl-16"
+    class="identity-sidebar sticky top-0 hidden h-dvh w-[440px] flex-col overflow-y-auto px-12 py-[72px] desktop:flex desktop:pl-16"
   >
     <div class="flex min-h-full flex-col">
-      <div class="flex flex-col items-start gap-[18px]">
+      <div class="identity-sidebar__intro flex flex-col items-start gap-[18px]">
         <p class="type-mono-sm text-ink">YEONGBEEN.CLOUD / 2026</p>
 
         <p class="type-display-identity text-ink" aria-label="Yeongbeen Choi">
@@ -71,7 +71,7 @@ onBeforeUnmount(() => sectionObserver?.disconnect())
         <PetCompanion />
       </div>
 
-      <div class="my-7 h-0.5 w-[88px] bg-accent" aria-hidden="true" />
+      <div class="identity-sidebar__divider my-7 h-0.5 w-[88px] bg-accent" aria-hidden="true" />
 
       <nav aria-label="페이지 섹션" class="flex flex-col">
         <a
@@ -79,7 +79,7 @@ onBeforeUnmount(() => sectionObserver?.disconnect())
           :key="section.id"
           :href="`#${section.id}`"
           :aria-current="activeSection === section.id ? 'location' : undefined"
-          class="group flex min-h-11 items-center gap-4 font-mono text-[13px] font-semibold tracking-[0.08em] text-ink-muted transition-colors duration-150 hover:text-ink"
+          class="identity-sidebar__nav-link group flex min-h-11 items-center gap-4 font-mono text-[13px] font-semibold tracking-[0.08em] text-ink-muted transition-colors duration-150 hover:text-ink"
           :class="activeSection === section.id && 'text-ink'"
           @click="setActiveSection(section.id)"
         >
@@ -96,7 +96,7 @@ onBeforeUnmount(() => sectionObserver?.disconnect())
         </a>
       </nav>
 
-      <div class="mt-auto flex flex-col gap-5 pt-10">
+      <div class="identity-sidebar__footer mt-auto flex flex-col gap-5 pt-10">
         <nav aria-label="외부 링크" class="flex flex-wrap gap-x-4 gap-y-2">
           <a
             href="https://github.com/binny0x00"
@@ -125,3 +125,57 @@ onBeforeUnmount(() => sectionObserver?.disconnect())
     </div>
   </aside>
 </template>
+
+<style scoped>
+@media (min-width: 75rem) and (max-height: 51.25rem) {
+  .identity-sidebar {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .identity-sidebar__intro {
+    gap: 0.625rem;
+  }
+
+  .identity-sidebar__divider {
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .identity-sidebar__nav-link {
+    min-height: 2.25rem;
+  }
+
+  .identity-sidebar__footer {
+    gap: 0.75rem;
+    padding-top: 1rem;
+  }
+
+  :deep(.pet-companion) {
+    width: 300px;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0;
+  }
+
+  :deep(.pet-companion__stage) {
+    width: 80px;
+    height: 64px;
+    flex: 0 0 80px;
+  }
+
+  :deep(.pet-companion__image) {
+    right: 8px;
+    width: 64px;
+    height: 64px;
+  }
+
+  :deep(.pet-companion__dot) {
+    top: 2px;
+    right: 2px;
+    width: 8px;
+    height: 8px;
+  }
+}
+</style>

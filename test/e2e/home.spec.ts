@@ -31,6 +31,18 @@ test('390px부터 1440px까지 핵심 콘텐츠가 겹치거나 가로로 넘치
   else await expect(sidebar).toBeHidden()
 })
 
+test('1200x720에서도 핵심 CTA와 sidebar 탐색을 한 화면에서 사용할 수 있다', async ({ page }) => {
+  await page.setViewportSize({ height: 720, width: 1200 })
+  await page.reload({ waitUntil: 'domcontentloaded' })
+
+  await expect(page.getByRole('link', { name: 'VIEW PROJECTS' })).toBeInViewport()
+
+  const sidebar = page.getByRole('complementary', { name: '개발자 정보 및 섹션 탐색' })
+  await expect(sidebar.getByRole('link', { name: 'CONTACT' })).toBeInViewport()
+  await expect(sidebar.getByRole('link', { name: /GITHUB/ })).toBeInViewport()
+  await expect(sidebar.getByRole('link', { name: /RÉSUMÉ/ })).toBeInViewport()
+})
+
 test('프로젝트 탐색과 이메일 연락 핵심 흐름이 동작한다', async ({ page }) => {
   await page.getByRole('link', { name: 'VIEW PROJECTS' }).click()
   await expect(page).toHaveURL(/#projects$/)
