@@ -65,3 +65,5 @@ Railway는 런타임에 `PORT`를 주입하며 애플리케이션은 이 값을 
 4. `Verify deployed service`에서 공개 URL과 HTTPS 응답 확인
 
 GitHub Actions의 healthcheck가 실패하더라도 Railway의 이전 정상 배포는 자동으로 삭제하지 않는다. Railway 대시보드에서 새 배포 상태를 확인하고 필요하면 이전 버전으로 rollback한다.
+
+도메인·Proxy·DNSSEC 설정과 복구 순서는 [Railway·Cloudflare 도메인 운영 Runbook](./deployment-runbook.md)을 따른다.
