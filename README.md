@@ -59,6 +59,7 @@ pnpm build
 ## 문서
 
 - [Sprint 1 계획](./sprint1.md)
+- [콘텐츠 작성 가이드](./docs/content-authoring.md)
 - [Figma 디자인](https://www.figma.com/design/o9H2K729hpqsiD0uz1OozA/)
 
 ## 팀원
