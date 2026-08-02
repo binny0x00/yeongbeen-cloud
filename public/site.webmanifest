@@ -1,0 +1,17 @@
+{
+  "name": "Yeongbeen Cloud",
+  "short_name": "YB.CLOUD",
+  "description": "최영빈의 프로젝트와 기술 기록을 소개하는 개인 개발 공간입니다.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffe45e",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
