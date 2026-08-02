@@ -104,7 +104,8 @@ onBeforeUnmount(() => {
     <div class="pet-companion__stage" aria-hidden="true">
       <!-- prettier-ignore -->
       <img src="/pet-companion.png" alt="" width="104" height="104" class="pet-companion__image">
-      <span class="pet-companion__dot" />
+      <!-- prettier-ignore -->
+      <img src="/yellow-point.png" alt="" width="12" height="12" class="pet-companion__dot">
     </div>
 
     <div class="flex flex-col gap-1" aria-live="polite">
@@ -157,8 +158,6 @@ onBeforeUnmount(() => {
   right: 4px;
   width: 10px;
   height: 10px;
-  border-radius: 999px;
-  background: var(--color-bg-accent);
 }
 
 .pet-companion--hidden .pet-companion__image {

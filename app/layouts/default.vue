@@ -17,6 +17,7 @@
       <IdentitySidebar />
       <main
         id="main-content"
+        tabindex="-1"
         class="min-w-0 px-[var(--layout-page-gutter)] pt-12 pb-12 desktop:px-[72px] desktop:py-[72px]"
       >
         <slot />
