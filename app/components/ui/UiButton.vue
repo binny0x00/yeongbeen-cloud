@@ -4,7 +4,7 @@ const props = withDefaults(
     disabled?: boolean
     to?: string
     type?: 'button' | 'submit' | 'reset'
-    variant?: 'primary' | 'secondary'
+    variant?: 'inverse' | 'primary' | 'secondary'
   }>(),
   {
     disabled: false,
@@ -19,11 +19,13 @@ const buttonClasses = computed(() => [
   props.disabled
     ? [
         'pointer-events-none cursor-not-allowed bg-surface text-ink-muted',
-        props.variant === 'primary' ? 'border-transparent' : 'border-stroke-strong',
+        props.variant === 'secondary' ? 'border-stroke-strong' : 'border-transparent',
       ]
     : props.variant === 'primary'
       ? 'border-transparent bg-accent text-[var(--color-text-on-accent)] hover:bg-inverse hover:text-ink-inverse'
-      : 'border-stroke-strong bg-canvas text-ink hover:bg-accent',
+      : props.variant === 'inverse'
+        ? 'border-transparent bg-inverse text-ink-inverse hover:bg-canvas hover:text-ink'
+        : 'border-stroke-strong bg-canvas text-ink hover:bg-accent',
 ])
 </script>
 
