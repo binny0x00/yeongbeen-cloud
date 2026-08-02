@@ -46,7 +46,7 @@ Sprint 1이 끝나면 방문자는 데스크톱과 모바일에서 다음 내용
 | Accessibility   | axe-core, semantic HTML           | 키보드 탐색과 접근성 오류 점검                                 |
 | Code Quality    | ESLint, Prettier, vue-tsc         | 코드 스타일, 타입, 빌드 오류 자동 검사                         |
 | Container       | Docker, Docker Compose            | 개발·CI·운영 환경에서 동일한 Nuxt 실행 방식 유지               |
-| CI/CD           | GitHub Actions + Railway CLI      | PR 품질 검증과 main 브랜치의 Docker 배포 자동화                |
+| CI/CD           | GitHub Actions + Railway CLI      | PR 품질 검증과 develop·main 브랜치의 Docker 배포 자동화        |
 | Production      | Railway                           | Nuxt SSR 애플리케이션을 Docker 컨테이너로 운영                 |
 | Database        | Railway PostgreSQL                | 이후 조회수·방명록·관리 기능을 위한 동적 데이터 저장           |
 | DNS/CDN/HTTPS   | 가비아 + Cloudflare               | 도메인 소유는 가비아에서 유지하고 DNS·프록시·HTTPS·DNSSEC 관리 |
@@ -58,7 +58,7 @@ Sprint 1이 끝나면 방문자는 데스크톱과 모바일에서 다음 내용
 - 새로운 라이브러리는 해결할 문제가 분명할 때만 추가한다.
 - 공통 UI는 외부 UI 프레임워크에 의존하지 않고 직접 구현한다.
 - 로컬, CI, 운영 환경 모두 같은 Dockerfile을 기준으로 실행한다.
-- Pull Request에서는 품질과 이미지 빌드를 검증하고, main 브랜치에서는 검증을 통과한 버전을 Railway에 배포한다.
+- Pull Request에서는 품질과 이미지 빌드를 검증하고, develop은 staging, main은 production Railway 환경에 배포한다.
 - Railway PostgreSQL은 실제 동적 데이터 기능이 필요해지는 시점에 연결하며 Sprint 1에서는 연결 구조와 환경변수를 준비한다.
 
 ### 최종 인프라 구성
@@ -107,7 +107,7 @@ Railway — Nuxt SSR Docker Container
 - ESLint, Prettier, vue-tsc, Vitest 설정
 - Dockerfile과 Docker Compose 구성
 - Pull Request CI: lint → typecheck → test → build → Docker build
-- main 브랜치 CD: CI 통과 → Railway Docker 배포 → health check
+- develop·main 브랜치 CD: CI 통과 → Railway staging·production Docker 배포 → health check
 - Railway Production 환경 1회 배포
 - `yeongbeen.cloud` 연결을 위한 DNS·배포 절차 문서화
 
@@ -168,7 +168,7 @@ Railway — Nuxt SSR Docker Container
 - Docker 이미지 빌드 및 로컬 실행 검증
 - GitHub Actions CI 구성
 - Railway 프로젝트와 Production 서비스 구성
-- GitHub Actions에서 Railway 배포 및 health check 자동화
+- GitHub Actions에서 develop은 staging, main은 production으로 Railway 배포 및 health check 자동화
 - 가비아 네임서버를 Cloudflare로 변경
 - Cloudflare에서 Railway CNAME·TXT 레코드와 HTTPS 프록시 설정
 - DNS 구성이 안정화된 후 DNSSEC 활성화
@@ -185,7 +185,7 @@ Railway — Nuxt SSR Docker Container
 - `pnpm lint`, `pnpm typecheck`, `pnpm test`, `pnpm build`가 통과한다.
 - Docker 이미지가 빌드되고 컨테이너에서 사이트가 실행된다.
 - Pull Request에서 CI가 자동 실행된다.
-- main 브랜치의 CI가 성공하면 동일한 Docker 기반 애플리케이션이 Railway에 배포된다.
+- develop·main 브랜치의 CI가 성공하면 동일한 Docker 기반 애플리케이션이 각각 Railway staging·production에 배포된다.
 - Railway 배포 후 health check 실패 시 워크플로우에서 오류를 확인할 수 있다.
 - `yeongbeen.cloud` 요청이 Cloudflare를 거쳐 Railway 서비스로 전달된다.
 - HTTPS, 루트 도메인, `www` 리다이렉트와 DNSSEC가 정상 동작한다.
@@ -199,7 +199,7 @@ Railway — Nuxt SSR Docker Container
 - Lighthouse Accessibility 95 이상을 목표로 한다.
 - 초기 화면에 레이아웃 이동을 유발하는 요소가 없어야 한다.
 - 대표 프로젝트와 연락 수단까지 3회 이내의 클릭으로 도달할 수 있어야 한다.
-- main 브랜치 병합 후 수동 파일 전송 없이 배포가 진행되어야 한다.
+- develop·main 브랜치 병합 후 수동 파일 전송 없이 해당 Railway 환경에 배포되어야 한다.
 
 ## 9. 예상 결과물
 
