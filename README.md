@@ -32,7 +32,7 @@ pnpm preview
 
 ## 테스트
 
-코드 스타일, 타입, 프로덕션 빌드를 한 번에 검증합니다.
+코드 스타일, 타입, 단위 테스트, 프로덕션 빌드를 한 번에 검증합니다.
 
 ```bash
 pnpm verify
@@ -44,6 +44,8 @@ pnpm verify
 pnpm lint
 pnpm format:check
 pnpm typecheck
+pnpm test
+pnpm test:e2e
 pnpm build
 ```
 
@@ -61,6 +63,7 @@ pnpm build
 - [Sprint 1 계획](./sprint1.md)
 - [콘텐츠 작성 가이드](./docs/content-authoring.md)
 - [GitHub REST API 연동](./docs/github-api.md)
+- [브라우저 품질 검사](./docs/quality-assurance.md)
 - [Figma 디자인](https://www.figma.com/design/o9H2K729hpqsiD0uz1OozA/)
 
 ## 팀원
