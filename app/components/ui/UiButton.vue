@@ -1,29 +1,43 @@
 <script setup lang="ts">
-withDefaults(
+const props = withDefaults(
   defineProps<{
     disabled?: boolean
+    to?: string
     type?: 'button' | 'submit' | 'reset'
     variant?: 'primary' | 'secondary'
   }>(),
   {
     disabled: false,
+    to: undefined,
     type: 'button',
     variant: 'primary',
   },
 )
+
+const buttonClasses = computed(() => [
+  'type-label inline-flex min-h-8 cursor-pointer items-center justify-center rounded-sm border px-4 py-2 transition-colors duration-150',
+  props.disabled
+    ? [
+        'pointer-events-none cursor-not-allowed bg-surface text-ink-muted',
+        props.variant === 'primary' ? 'border-transparent' : 'border-stroke-strong',
+      ]
+    : props.variant === 'primary'
+      ? 'border-transparent bg-accent text-[var(--color-text-on-accent)] hover:bg-inverse hover:text-ink-inverse'
+      : 'border-stroke-strong bg-canvas text-ink hover:bg-accent',
+])
 </script>
 
 <template>
-  <button
-    :type="type"
-    :disabled="disabled"
-    class="type-label inline-flex min-h-8 cursor-pointer items-center justify-center rounded-sm border px-4 py-2 transition-colors duration-150 disabled:cursor-not-allowed"
-    :class="
-      variant === 'primary'
-        ? 'border-transparent bg-accent text-[var(--color-text-on-accent)] enabled:hover:bg-inverse enabled:hover:text-ink-inverse disabled:bg-surface disabled:text-ink-muted'
-        : 'border-stroke-strong bg-canvas text-ink enabled:hover:bg-accent disabled:bg-surface disabled:text-ink-muted'
-    "
+  <NuxtLink
+    v-if="to"
+    :to="to"
+    :aria-disabled="disabled || undefined"
+    :tabindex="disabled ? -1 : undefined"
+    :class="buttonClasses"
   >
+    <slot />
+  </NuxtLink>
+  <button v-else :type="type" :disabled="disabled" :class="buttonClasses">
     <slot />
   </button>
 </template>
