@@ -4,9 +4,14 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   components: [{ path: '~/components', pathPrefix: false }],
+  content: {
+    experimental: {
+      sqliteConnector: 'native',
+    },
+  },
   css: ['~/assets/css/main.css'],
   devtools: { enabled: true },
-  modules: ['@nuxt/eslint'],
+  modules: ['@nuxt/content', '@nuxt/eslint'],
   typescript: {
     strict: true,
   },
