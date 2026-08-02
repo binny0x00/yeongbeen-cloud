@@ -1,38 +1,33 @@
 <script setup lang="ts">
 defineProps<{
+  category: string
+  date: string
   description: string
-  mobileDescription: string
-  mobileTitle: string
-  status: string
   title: string
   to: string
 }>()
 </script>
 
 <template>
-  <article class="w-full border-t border-border">
+  <article class="w-full border-b border-border">
     <NuxtLink
       :to="to"
-      class="group flex w-full flex-col items-start gap-2 py-6 transition-colors duration-150 hover:text-ink-accent desktop:flex-row desktop:items-center desktop:gap-8"
+      :aria-label="`${title} 글 읽기`"
+      class="group grid w-full grid-cols-1 gap-2 py-5 no-underline transition-colors duration-200 hover:bg-surface/60 tablet:grid-cols-[8rem_1fr_2rem] tablet:gap-x-6 tablet:py-6"
     >
-      <p class="type-mono-sm w-full shrink-0 text-ink-muted desktop:w-40">
-        {{ status }}
-      </p>
+      <p class="type-mono-sm text-ink-muted">{{ date }} · {{ category }}</p>
 
-      <div class="flex min-w-0 flex-1 flex-col items-start gap-2">
-        <h3 class="type-heading-sm w-full">
-          <span class="desktop:hidden">{{ mobileTitle }}</span>
-          <span class="hidden desktop:inline">{{ title }}</span>
+      <div class="flex min-w-0 flex-col gap-1">
+        <h3
+          class="type-body-md font-semibold text-ink transition-colors duration-200 group-hover:text-ink-accent-primary"
+        >
+          {{ title }}
         </h3>
-        <p class="type-body-sm w-full text-ink-muted">
-          <span class="desktop:hidden">{{ mobileDescription }}</span>
-          <span class="hidden desktop:inline">{{ description }}</span>
-        </p>
+        <p class="type-body-sm text-ink-muted">{{ description }}</p>
       </div>
 
-      <span class="type-label desktop:hidden" aria-hidden="true">READ NOTE&nbsp; ↗</span>
       <span
-        class="hidden w-8 shrink-0 font-sans text-[28px] leading-9 font-semibold tracking-[-0.4px] desktop:block"
+        class="type-heading-sm text-ink-accent transition-transform duration-200 motion-safe:group-hover:translate-x-1 motion-safe:group-hover:-translate-y-1"
         aria-hidden="true"
       >
         ↗

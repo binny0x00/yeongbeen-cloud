@@ -9,7 +9,7 @@ export default defineNuxtConfig({
         { href: '/favicon.svg', rel: 'icon', type: 'image/svg+xml' },
         { href: '/site.webmanifest', rel: 'manifest' },
       ],
-      meta: [{ content: '#ffe45e', name: 'theme-color' }],
+      meta: [{ content: '#f9f7f1', name: 'theme-color' }],
     },
   },
   compatibilityDate: '2025-07-15',

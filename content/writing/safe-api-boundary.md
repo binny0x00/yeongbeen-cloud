@@ -1,8 +1,10 @@
 ---
 title: TypeScript로 API 응답 경계를 안전하게 만들기
+category: Type Safety
 description: 정적 타입과 런타임 검증을 함께 사용해 신뢰할 수 없는 데이터를 다루는 방법입니다.
 status: planned
 order: 2
+publishedAt: 2026-08-02
 tags:
   - TypeScript
   - REST API
