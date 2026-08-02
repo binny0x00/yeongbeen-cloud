@@ -1,61 +1,89 @@
 :root {
   color-scheme: light;
 
-  /* Primitive colors */
+  /* Primitive colors — Figma V3 foundations */
   --neutral-0: #ffffff;
-  --neutral-50: #f6f6f1;
-  --neutral-300: #d8d8d0;
-  --neutral-600: #66665f;
-  --neutral-950: #0e0e0e;
-  --yellow-500: #ffe45e;
-  --pink-500: #ff6fae;
-  --pink-600: #e94b93;
+  --neutral-50: #f9f7f1;
+  --neutral-100: #efece2;
+  --neutral-200: #c7c2b2;
+  --neutral-300: var(--neutral-200);
+  --neutral-400: #9a978d;
+  --neutral-600: #545247;
+  --neutral-800: #262621;
+  --neutral-900: #141412;
+  --neutral-950: var(--neutral-900);
+  --night-800: #242420;
+  --night-900: #0e0e0e;
+  --yellow-400: #d7c98e;
+  --yellow-500: #a6842e;
+  --yellow-600: #8a6e20;
+  --pink-400: #f7b0cf;
+  --pink-500: #f06aa1;
+  --pink-600: #eb4587;
 
   /* Semantic colors */
-  --color-bg-primary: var(--neutral-0);
-  --color-bg-secondary: var(--neutral-50);
-  --color-bg-inverse: var(--neutral-950);
+  --color-bg-primary: var(--neutral-50);
+  --color-bg-secondary: var(--neutral-0);
+  --color-bg-inverse: var(--neutral-900);
   --color-bg-accent: var(--yellow-500);
   --color-bg-accent-secondary: var(--pink-500);
-  --color-text-primary: var(--neutral-950);
+  --color-bg-elevated: var(--neutral-0);
+  --color-text-primary: var(--neutral-900);
   --color-text-secondary: var(--neutral-600);
   --color-text-inverse: var(--neutral-0);
-  --color-text-on-accent: var(--neutral-950);
+  --color-text-on-accent: var(--neutral-900);
   --color-text-accent: var(--pink-600);
-  --color-border-default: var(--neutral-300);
-  --color-border-strong: var(--neutral-950);
+  --color-text-accent-primary: var(--yellow-600);
+  --color-border-default: var(--neutral-200);
+  --color-border-strong: var(--neutral-900);
   --color-focus-ring: var(--pink-600);
+  --color-icon-default: var(--neutral-900);
+  --color-icon-secondary: var(--neutral-600);
 
-  /* Typography */
-  --font-size-display-lg: 4.5rem;
-  --line-height-display-lg: 4.25rem;
-  --letter-spacing-display-lg: -0.125rem;
-  --font-size-display-md: 3.625rem;
-  --line-height-display-md: 3.75rem;
-  --letter-spacing-display-md: -0.0725rem;
-  --font-size-display-sm: 2.375rem;
-  --line-height-display-sm: 2.625rem;
-  --letter-spacing-display-sm: -0.02375rem;
-  --font-size-heading-lg: 2.5rem;
-  --line-height-heading-lg: 3rem;
-  --letter-spacing-heading-lg: -0.05rem;
+  /* Typography — Figma V3 text styles */
+  --font-size-display-hero: 5.125rem;
+  --line-height-display-hero: 4.75rem;
+  --letter-spacing-display-hero: -0.09375rem;
+  --font-size-display-lg: 4rem;
+  --line-height-display-lg: 3.75rem;
+  --letter-spacing-display-lg: -0.0625rem;
+  --font-size-display-identity: 3.625rem;
+  --line-height-display-identity: 3.5rem;
+  --letter-spacing-display-identity: -0.046875rem;
+  --font-size-display-mobile: 2.75rem;
+  --line-height-display-mobile: 2.875rem;
+  --letter-spacing-display-mobile: -0.03125rem;
+
+  /* Transitional aliases kept while Sprint 2 sections migrate independently. */
+  --font-size-display-md: var(--font-size-display-identity);
+  --line-height-display-md: var(--line-height-display-identity);
+  --letter-spacing-display-md: var(--letter-spacing-display-identity);
+  --font-size-display-sm: var(--font-size-display-mobile);
+  --line-height-display-sm: var(--line-height-display-mobile);
+  --letter-spacing-display-sm: var(--letter-spacing-display-mobile);
+
+  --font-size-heading-lg: 2.8125rem;
+  --line-height-heading-lg: 2.75rem;
+  --letter-spacing-heading-lg: -0.03125rem;
   --font-size-heading-md: 1.75rem;
   --line-height-heading-md: 2.25rem;
-  --letter-spacing-heading-md: -0.025rem;
+  --letter-spacing-heading-md: 0;
   --font-size-heading-sm: 1.25rem;
   --line-height-heading-sm: 1.75rem;
   --font-size-body-lg: 1.125rem;
-  --line-height-body-lg: 1.875rem;
+  --line-height-body-lg: 1.9375rem;
   --font-size-body-md: 1rem;
-  --line-height-body-md: 1.625rem;
+  --line-height-body-md: 1.75rem;
   --font-size-body-sm: 0.875rem;
   --line-height-body-sm: 1.375rem;
   --font-size-label: 0.75rem;
-  --line-height-label: 1rem;
-  --letter-spacing-label: 0.0625rem;
+  --line-height-label: 1.125rem;
+  --letter-spacing-label: 0.05rem;
   --font-size-mono-sm: 0.75rem;
   --line-height-mono-sm: 1.125rem;
-  --letter-spacing-mono-sm: 0.01875rem;
+  --letter-spacing-mono-sm: 0.025rem;
+  --font-size-handwritten: 2rem;
+  --line-height-handwritten: 2.375rem;
 
   /* Spacing */
   --spacing-1: 0.25rem;
@@ -69,7 +97,6 @@
   --spacing-20: 5rem;
   --spacing-26: 6.5rem;
 
-  /* Shape and elevation */
   /* Layout */
   --layout-page-gutter: clamp(1.25rem, 6.1vw, 5.5rem);
   --layout-content-max: 79rem;
@@ -77,23 +104,34 @@
 
 [data-theme='dark'] {
   color-scheme: dark;
-  --color-bg-primary: var(--neutral-950);
-  --color-bg-secondary: #242420;
+  --color-bg-primary: var(--night-900);
+  --color-bg-secondary: var(--night-800);
   --color-bg-inverse: var(--neutral-0);
+  --color-bg-accent: var(--yellow-400);
+  --color-bg-accent-secondary: var(--pink-400);
+  --color-bg-elevated: var(--neutral-800);
   --color-text-primary: var(--neutral-0);
-  --color-text-secondary: #b8b8ae;
-  --color-text-inverse: var(--neutral-950);
-  --color-border-default: #3c3c37;
+  --color-text-secondary: var(--neutral-400);
+  --color-text-inverse: var(--neutral-900);
+  --color-text-on-accent: var(--neutral-900);
+  --color-text-accent: var(--pink-400);
+  --color-text-accent-primary: var(--yellow-400);
+  --color-border-default: var(--neutral-600);
   --color-border-strong: var(--neutral-0);
+  --color-focus-ring: var(--pink-400);
+  --color-icon-default: var(--neutral-0);
+  --color-icon-secondary: var(--neutral-400);
 }
 
 @theme inline {
-  --font-display: 'Archivo Black', Arial, sans-serif;
+  --font-display: 'Archivo Narrow', Arial, sans-serif;
+  --font-handwritten: 'Caveat Brush', cursive;
   --font-sans: 'IBM Plex Sans KR', 'Noto Sans KR', sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
 
   --color-canvas: var(--color-bg-primary);
   --color-surface: var(--color-bg-secondary);
+  --color-elevated: var(--color-bg-elevated);
   --color-inverse: var(--color-bg-inverse);
   --color-accent: var(--color-bg-accent);
   --color-accent-secondary: var(--color-bg-accent-secondary);
@@ -101,6 +139,7 @@
   --color-ink-muted: var(--color-text-secondary);
   --color-ink-inverse: var(--color-text-inverse);
   --color-ink-accent: var(--color-text-accent);
+  --color-ink-accent-primary: var(--color-text-accent-primary);
   --color-border: var(--color-border-default);
   --color-stroke-strong: var(--color-border-strong);
 
