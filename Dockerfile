@@ -11,8 +11,7 @@ FROM base AS dependencies
 
 COPY package.json pnpm-lock.yaml .nuxtrc ./
 
-RUN --mount=type=cache,target=/pnpm/store \
-  pnpm install --frozen-lockfile
+RUN pnpm install --frozen-lockfile
 
 FROM dependencies AS build
 
