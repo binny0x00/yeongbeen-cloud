@@ -29,11 +29,12 @@ const experiences: ExperienceItem[] = [
 
 <template>
   <section
+    id="experience"
     aria-labelledby="experience-title"
-    class="flex w-full flex-col items-start gap-4 desktop:gap-6"
+    class="flex w-full scroll-mt-8 flex-col items-start gap-4 desktop:gap-6"
   >
     <h2 id="experience-title" class="sr-only">Experience</h2>
-    <SectionLabel :index="2" label="EXPERIENCE" />
+    <SectionEyebrow label="EXPERIENCE" class="-ml-4" />
 
     <ol class="w-full">
       <li

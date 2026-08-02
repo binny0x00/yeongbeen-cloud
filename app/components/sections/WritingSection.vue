@@ -38,11 +38,12 @@ const articles: ArticleSummary[] = [
 
 <template>
   <section
+    id="writing"
     aria-labelledby="writing-title"
-    class="flex w-full flex-col items-start gap-4 desktop:gap-6"
+    class="flex w-full scroll-mt-8 flex-col items-start gap-4 desktop:gap-6"
   >
     <h2 id="writing-title" class="sr-only">Recent Writing</h2>
-    <SectionLabel :index="4" label="RECENT WRITING" mobile-label="WRITING" />
+    <SectionEyebrow label="ENGINEERING NOTES" mobile-label="NOTES" class="-ml-4" />
 
     <ol class="w-full">
       <li v-for="article in articles" :key="article.to">

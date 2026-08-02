@@ -10,7 +10,7 @@ test.beforeEach(async ({ page }) => {
 
 test('핵심 콘텐츠를 표시하고 가로로 넘치지 않는다', async ({ page }) => {
   await expect(page).toHaveTitle(/Yeongbeen Cloud/)
-  await expect(page.getByRole('heading', { level: 1, name: /YEONGBEEN CHOI/ })).toBeVisible()
+  await expect(page.getByRole('heading', { level: 1, name: /I BUILD INTERFACES/ })).toBeVisible()
   await expect(page.locator('#about')).toBeVisible()
   await expect(page.locator('#projects')).toBeVisible()
   await expect(page.locator('#contact')).toBeVisible()

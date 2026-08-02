@@ -4,7 +4,7 @@
     aria-labelledby="about-title"
     class="flex w-full scroll-mt-8 flex-col items-start gap-6"
   >
-    <SectionLabel :index="1" label="ABOUT" />
+    <SectionEyebrow label="OVERVIEW" tone="primary" class="-ml-4" />
 
     <h2 id="about-title" class="type-heading-md text-ink">
       <span class="desktop:hidden">화면과 그 뒤의 구조를 함께 설계합니다.</span>

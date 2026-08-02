@@ -13,66 +13,48 @@ withDefaults(
 
 <template>
   <section
+    id="about"
     aria-labelledby="hero-title"
-    class="flex w-full flex-col items-start gap-4 desktop:w-[470px] desktop:gap-6"
+    class="flex min-h-[720px] w-full scroll-mt-8 flex-col items-start gap-6 desktop:min-h-[900px]"
   >
-    <div class="type-mono-sm flex h-[18px] w-full justify-between">
-      <p class="text-ink">AVAILABLE / 2026</p>
-      <p class="text-ink-muted">SEOUL, KR</p>
-    </div>
+    <SectionEyebrow label="OVERVIEW" tone="primary" class="-ml-4" />
+
+    <p class="type-mono-sm text-ink-muted desktop:hidden">YEONGBEEN CHOI · FRONTEND ENGINEER</p>
 
     <h1
       id="hero-title"
-      class="font-display text-[44px] leading-[46px] tracking-[-0.88px] text-ink desktop:text-[58px] desktop:leading-[60px] desktop:tracking-[-1.16px]"
+      class="font-display text-[var(--font-size-display-mobile)] leading-[var(--line-height-display-mobile)] font-bold tracking-[var(--letter-spacing-display-mobile)] text-ink desktop:text-[clamp(4rem,5.7vw,5.125rem)] desktop:leading-[0.93] desktop:tracking-[var(--letter-spacing-display-hero)]"
     >
-      <span class="block">YEONGBEEN</span>
-      <span class="block">CHOI</span>
+      <span class="block">I BUILD INTERFACES</span>
+      <span class="block">THAT FEEL CLEAR</span>
+      <span class="block">AND SHIP RELIABLY.</span>
     </h1>
 
-    <span
-      aria-hidden="true"
-      class="h-2 w-[104px] rounded-full bg-accent-secondary desktop:h-2.5 desktop:w-[136px]"
-    />
-
-    <div
-      class="flex w-full flex-col gap-4 overflow-hidden rounded-lg bg-accent p-6 text-[var(--color-text-on-accent)]"
-    >
-      <p class="type-mono-sm">01 / PERSONAL DEVELOPER SPACE</p>
-      <p
-        class="font-display text-[31px] leading-[35px] tracking-[-0.31px] desktop:text-[38px] desktop:leading-[42px] desktop:tracking-[-0.38px]"
-      >
-        <span class="desktop:hidden">
-          <span class="block">BUILDING FOR</span>
-          <span class="block">THE WEB.</span>
-        </span>
-        <span class="hidden desktop:inline">
-          <span class="block">BUILDING</span>
-          <span class="block">FOR THE WEB.</span>
-        </span>
-      </p>
-      <div class="flex h-[30px] w-full items-center justify-between">
-        <p class="text-[15px] font-semibold whitespace-nowrap">FRONTEND ENGINEER</p>
-        <span
-          class="rounded-full bg-accent-secondary px-3 py-2 font-mono text-[11px] leading-none whitespace-nowrap"
-        >
-          NUXT + TS
-        </span>
-      </div>
-    </div>
-
-    <p class="text-[16px] leading-[25px] text-ink-muted desktop:text-[17px] desktop:leading-[27px]">
-      재사용 가능한 인터페이스와 안정적인 배포 흐름을 설계하며, 아이디어를 실제 서비스로 연결합니다.
+    <p aria-hidden="true" class="type-handwritten rotate-2 text-ink-accent">
+      design × engineering × operations
     </p>
 
-    <div class="flex items-center gap-4">
-      <UiButton to="#projects">PROJECTS</UiButton>
+    <div
+      class="flex max-w-[856px] flex-col gap-5 pt-6 font-sans text-[16px] leading-7 text-ink-muted desktop:text-[18px] desktop:leading-[31px]"
+    >
+      <p>
+        사용자에게는 명확하고, 팀에게는 오래 유지되는 화면을 만듭니다. React와 TypeScript에서 시작해
+        Nuxt, Docker, CI/CD까지 제품이 실제로 운영되는 전체 흐름을 이해하고 개선합니다.
+      </p>
+      <p>
+        AI는 속도를 높이는 도구로 활용하되, 구조와 품질, 검증에 대한 책임은 개발자가 가져야 한다고
+        믿습니다.
+      </p>
+    </div>
+
+    <div class="flex flex-wrap items-center gap-x-5 gap-y-3 pt-2">
+      <UiButton to="#projects">VIEW PROJECTS</UiButton>
       <UiTextLink :to="githubUrl" external>GITHUB</UiTextLink>
       <UiTextLink :to="resumeUrl" show-arrow>RÉSUMÉ</UiTextLink>
     </div>
 
-    <p class="font-mono text-[10px] leading-normal text-ink-muted desktop:text-[11px]">
-      <span class="desktop:hidden">NUXT · TYPESCRIPT · A11Y · CI/CD</span>
-      <span class="hidden desktop:inline"> NUXT · TYPESCRIPT · ACCESSIBILITY · CI/CD </span>
+    <p class="type-label pt-4 text-ink">
+      NUXT · TYPESCRIPT · VUE · DOCKER · GITHUB ACTIONS · RAILWAY
     </p>
   </section>
 </template>

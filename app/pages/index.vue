@@ -8,7 +8,6 @@ useSeoMeta({
 <template>
   <div class="flex w-full max-w-[856px] flex-col gap-[104px]">
     <HeroSection />
-    <AboutSection />
     <ExperienceSection />
     <ProjectsSection />
     <WritingSection />
