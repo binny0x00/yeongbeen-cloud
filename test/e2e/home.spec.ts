@@ -61,6 +61,15 @@ test('프로젝트 상세에서 GitHub 저장소 아이콘 링크를 제공한�
   await expect(repositoryLink).toHaveAttribute('target', '_blank')
 })
 
+test('스크롤 시 주요 콘텐츠를 한 번만 reveal한다', async ({ page }) => {
+  const contentRail = page.locator('[data-motion]')
+  await expect(contentRail).toHaveAttribute('data-motion', 'enabled')
+
+  const projectsReveal = page.locator('[data-reveal]').filter({ has: page.locator('#projects') })
+  await projectsReveal.scrollIntoViewIfNeeded()
+  await expect(projectsReveal).toHaveClass(/is-visible/)
+})
+
 test('키보드로 본문 건너뛰기와 주요 링크를 탐색할 수 있다', async ({ page }) => {
   await page.keyboard.press('Tab')
   const skipLink = page.getByRole('link', { name: '본문으로 이동' })
@@ -81,6 +90,11 @@ test('reduced motion에서는 companion을 정적으로 표시한다', async ({ 
   const companion = page.locator('.pet-companion')
   await expect(companion).toHaveAttribute('data-state', 'idle')
   await expect(companion).toHaveAttribute('aria-hidden', 'false')
+  await expect(page.locator('[data-motion]')).toHaveAttribute('data-motion', 'reduced')
+
+  const reveals = page.locator('[data-reveal]')
+  await expect(reveals.first()).toHaveCSS('opacity', '1')
+  await expect(reveals.last()).toHaveCSS('opacity', '1')
 })
 
 test('자동 검사 가능한 WCAG A와 AA 위반이 없다', async ({ page }, testInfo) => {
