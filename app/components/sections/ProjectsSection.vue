@@ -41,7 +41,7 @@ const repositoriesByName = computed(
     class="flex w-full scroll-mt-8 flex-col items-start gap-6 desktop:gap-8"
   >
     <h2 id="projects-title" class="sr-only">Featured Projects</h2>
-    <SectionLabel :index="3" label="FEATURED PROJECTS" />
+    <SectionEyebrow label="PROJECTS" class="-ml-4" />
 
     <div aria-live="polite" class="w-full">
       <p v-if="status === 'pending'" class="type-mono-sm text-ink-muted">GITHUB DATA / LOADING</p>
