@@ -1,0 +1,22 @@
+services:
+  web:
+    build:
+      context: .
+      target: runtime
+    environment:
+      HOST: 0.0.0.0
+      PORT: ${PORT:-3000}
+    image: yeongbeen-cloud:local
+    ports:
+      - '${PORT:-3000}:${PORT:-3000}'
+    restart: unless-stopped
+    healthcheck:
+      test:
+        [
+          'CMD-SHELL',
+          'wget --no-verbose --tries=1 --spider http://127.0.0.1:$${PORT}/api/health || exit 1',
+        ]
+      interval: 10s
+      timeout: 5s
+      start_period: 10s
+      retries: 3
