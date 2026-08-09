@@ -1,13 +1,15 @@
+import { fileURLToPath } from 'node:url'
+
 import tailwindcss from '@tailwindcss/vite'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   alias: {
-    '@admin': './layers/admin',
-    '@content-domain': './layers/content',
-    '@design-system': './layers/design-system',
-    '@engagement': './layers/engagement',
-    '@identity': './layers/identity',
+    '@admin': fileURLToPath(new URL('./layers/admin', import.meta.url)),
+    '@content-domain': fileURLToPath(new URL('./layers/content', import.meta.url)),
+    '@design-system': fileURLToPath(new URL('./layers/design-system', import.meta.url)),
+    '@engagement': fileURLToPath(new URL('./layers/engagement', import.meta.url)),
+    '@identity': fileURLToPath(new URL('./layers/identity', import.meta.url)),
   },
   app: {
     head: {
