@@ -12,6 +12,7 @@ describe('RolePolicy', () => {
 
   it('EDITOR는 작성만, MEMBER는 댓글 작성만 허용한다', () => {
     expect(policy.allows('EDITOR', 'content:write')).toBe(true)
+    expect(policy.allows('EDITOR', 'comment:write')).toBe(true)
     expect(policy.allows('EDITOR', 'content:publish')).toBe(false)
     expect(policy.allows('MEMBER', 'comment:write')).toBe(true)
     expect(policy.allows('MEMBER', 'comment:moderate')).toBe(false)

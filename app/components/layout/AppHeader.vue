@@ -25,6 +25,7 @@ const { locale } = useI18n()
         </NavigationLink>
       </nav>
 
+      <NotificationBell />
       <NuxtLink
         :to="switchLocalePath(locale === 'ko' ? 'en' : 'ko')"
         class="type-label inline-flex min-h-11 items-center text-ink-muted hover:text-ink"

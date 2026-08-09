@@ -11,7 +11,7 @@ export type Permission =
   | 'settings:manage'
 
 const permissions: Record<Role, ReadonlySet<Permission>> = {
-  EDITOR: new Set(['content:write']),
+  EDITOR: new Set(['comment:write', 'content:write']),
   MEMBER: new Set(['comment:write']),
   OWNER: new Set([
     'comment:moderate',
