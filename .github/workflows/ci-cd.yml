@@ -118,6 +118,9 @@ jobs:
       - name: Verify PostgreSQL and Redis adapters
         run: pnpm infrastructure:verify
 
+      - name: Verify editor persistence and optimistic locking
+        run: pnpm editor:verify
+
       - name: Verify idempotent content import and rollback
         run: >-
           pnpm content:import &&
