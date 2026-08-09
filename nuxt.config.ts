@@ -63,6 +63,7 @@ export default defineNuxtConfig({
     githubToken: '',
     public: {
       siteUrl: 'https://yeongbeen.cloud',
+      turnstileSiteKey: '',
     },
   },
   typescript: {

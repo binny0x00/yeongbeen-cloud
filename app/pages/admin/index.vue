@@ -34,6 +34,9 @@ async function createDocument(): Promise<void> {
     <header class="flex flex-col gap-3">
       <SectionEyebrow label="ADMIN" class="-ml-4" />
       <h1 class="type-display-lg">{{ t('admin.studio') }}</h1>
+      <DsButton :to="localePath('/admin/comments')" variant="secondary">{{
+        t('admin.commentManagement')
+      }}</DsButton>
     </header>
     <form class="s3-panel grid gap-4 p-6 tablet:grid-cols-2" @submit.prevent="createDocument">
       <DsTextField v-model="createForm.title" :label="t('admin.title')" name="title" />

@@ -57,6 +57,13 @@
     "restore": "Restore",
     "current": "Current",
     "revision": "Revision",
+    "commentManagement": "Comment moderation",
+    "moderationEmpty": "There are no comments or reports to review.",
+    "moderationReason": "Why should this comment be hidden?",
+    "blockReason": "Why should this member be blocked?",
+    "hideComment": "Hide comment",
+    "approveComment": "Approve comment",
+    "blockUser": "Block member",
     "toolbar": {
       "formatting": "Formatting",
       "bold": "Bold",
@@ -77,5 +84,28 @@
       "uploading": "Uploading",
       "retry": "Retry upload"
     }
+  },
+  "engagement": {
+    "title": "Comments and likes",
+    "comment": "Comment",
+    "submit": "Post comment",
+    "reply": "Reply",
+    "replying": "Writing a reply",
+    "edit": "Edit",
+    "delete": "Delete",
+    "deleteConfirm": "Delete this comment?",
+    "report": "Report",
+    "reportReason": "Why are you reporting this comment?",
+    "cancel": "Cancel",
+    "pending": "This comment will appear after review.",
+    "deleted": "This comment was deleted.",
+    "deletedUser": "Anonymous user",
+    "error": "We could not process the request. Please try again."
+  },
+  "notifications": {
+    "title": "Notifications",
+    "empty": "You have no new notifications.",
+    "reply": "A new reply was added to your comment.",
+    "hidden": "A moderator hid your comment."
   }
 }

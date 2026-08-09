@@ -54,6 +54,13 @@
     "restore": "복원",
     "current": "현재",
     "revision": "리비전",
+    "commentManagement": "댓글 관리",
+    "moderationEmpty": "검토할 댓글이나 신고가 없습니다.",
+    "moderationReason": "숨김 사유를 입력하세요",
+    "blockReason": "사용자 차단 사유를 입력하세요",
+    "hideComment": "댓글 숨김",
+    "approveComment": "댓글 승인",
+    "blockUser": "사용자 차단",
     "toolbar": {
       "formatting": "서식 도구",
       "bold": "굵게",
@@ -74,5 +81,28 @@
       "uploading": "업로드 중",
       "retry": "업로드 재시도"
     }
+  },
+  "engagement": {
+    "title": "댓글과 공감",
+    "comment": "댓글",
+    "submit": "댓글 남기기",
+    "reply": "답글",
+    "replying": "답글 작성 중",
+    "edit": "수정",
+    "delete": "삭제",
+    "deleteConfirm": "이 댓글을 삭제할까요?",
+    "report": "신고",
+    "reportReason": "신고 사유를 입력하세요",
+    "cancel": "취소",
+    "pending": "검토 후 공개됩니다.",
+    "deleted": "삭제된 댓글입니다.",
+    "deletedUser": "탈퇴 또는 익명 사용자",
+    "error": "요청을 처리하지 못했습니다. 잠시 후 다시 시도하세요."
+  },
+  "notifications": {
+    "title": "알림",
+    "empty": "새 알림이 없습니다.",
+    "reply": "내 댓글에 새 답글이 달렸습니다.",
+    "hidden": "관리자가 내 댓글을 숨김 처리했습니다."
   }
 }

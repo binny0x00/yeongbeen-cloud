@@ -95,6 +95,7 @@ async function share(): Promise<void> {
     <div class="border-t border-border pt-6">
       <DsButton variant="secondary" @click="share">Share</DsButton>
     </div>
+    <ContentEngagement :document-id="item.id" :locale="item.locale" />
   </article>
 </template>
 
