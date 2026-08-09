@@ -27,6 +27,10 @@ export default defineNuxtConfig({
       path: fileURLToPath(new URL('./layers/design-system/app/components', import.meta.url)),
       pathPrefix: false,
     },
+    {
+      path: fileURLToPath(new URL('./layers/admin/app/components', import.meta.url)),
+      pathPrefix: false,
+    },
   ],
   extends: [
     './layers/design-system',
