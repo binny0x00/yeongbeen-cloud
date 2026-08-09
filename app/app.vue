@@ -7,9 +7,12 @@ const siteDescription =
 const siteUrl = String(config.public.siteUrl).replace(/\/$/, '')
 const canonicalUrl = computed(() => `${siteUrl}${route.path}`)
 const socialImageUrl = `${siteUrl}/og-image.png`
+const localeHead = useLocaleHead({ dir: true, lang: true, seo: true })
 
 useHead(() => ({
-  link: [{ href: canonicalUrl.value, rel: 'canonical' }],
+  htmlAttrs: localeHead.value.htmlAttrs,
+  link: [...(localeHead.value.link ?? []), { href: canonicalUrl.value, rel: 'canonical' }],
+  meta: localeHead.value.meta,
   titleTemplate: title => (title && title !== siteName ? `${title} · ${siteName}` : siteName),
 }))
 
@@ -20,7 +23,7 @@ useSeoMeta({
   ogImageAlt: 'Yeongbeen Cloud — Projects, writing and experiments by Yeongbeen Choi',
   ogImageHeight: 630,
   ogImageWidth: 1200,
-  ogLocale: 'ko_KR',
+  ogLocale: () => (route.path.startsWith('/en') ? 'en_US' : 'ko_KR'),
   ogSiteName: siteName,
   ogTitle: siteName,
   ogType: 'website',

@@ -13,7 +13,6 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      htmlAttrs: { lang: 'ko' },
       link: [
         { href: '/favicon.svg', rel: 'icon', type: 'image/svg+xml' },
         { href: '/site.webmanifest', rel: 'manifest' },
@@ -22,7 +21,13 @@ export default defineNuxtConfig({
     },
   },
   compatibilityDate: '2025-07-15',
-  components: [{ path: '~/components', pathPrefix: false }],
+  components: [
+    { path: '~/components', pathPrefix: false },
+    {
+      path: fileURLToPath(new URL('./layers/design-system/app/components', import.meta.url)),
+      pathPrefix: false,
+    },
+  ],
   extends: [
     './layers/design-system',
     './layers/content',
@@ -30,14 +35,24 @@ export default defineNuxtConfig({
     './layers/engagement',
     './layers/admin',
   ],
-  content: {
-    experimental: {
-      sqliteConnector: 'native',
-    },
-  },
   css: ['~/assets/css/main.css'],
   devtools: { enabled: true },
-  modules: ['@nuxt/content', '@nuxt/eslint'],
+  i18n: {
+    baseUrl: process.env.NUXT_PUBLIC_SITE_URL ?? 'https://yeongbeen.cloud',
+    defaultLocale: 'ko',
+    detectBrowserLanguage: {
+      cookieKey: 'yb_locale',
+      redirectOn: 'root',
+      useCookie: true,
+    },
+    langDir: 'locales',
+    locales: [
+      { code: 'ko', file: 'ko.json', language: 'ko-KR', name: '한국어' },
+      { code: 'en', file: 'en.json', language: 'en-US', name: 'English' },
+    ],
+    strategy: 'prefix',
+  },
+  modules: ['@nuxtjs/i18n', '@nuxt/eslint'],
   runtimeConfig: {
     githubOwner: 'binny0x00',
     githubRepositories: 'yeongbeen-cloud',

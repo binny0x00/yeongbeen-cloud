@@ -37,7 +37,7 @@
     "@fontsource/caveat-brush": "5.3.0",
     "@fontsource/ibm-plex-mono": "5.3.0",
     "@fontsource/ibm-plex-sans-kr": "5.3.0",
-    "@nuxt/content": "^3.15.2",
+    "@nuxtjs/i18n": "^10.6.0",
     "better-auth": "^1.6.26",
     "drizzle-orm": "^0.45.2",
     "gray-matter": "^4.0.3",
