@@ -1,42 +1,45 @@
 :root {
   color-scheme: light;
 
-  /* Primitive colors — Figma V3 foundations */
+  /* Primitive colors — Sprint 3 Paper · Ink · Lime */
   --neutral-0: #ffffff;
-  --neutral-50: #f9f7f1;
-  --neutral-100: #efece2;
-  --neutral-200: #c7c2b2;
+  --neutral-50: #f7f7f4;
+  --neutral-100: #ebebe7;
+  --neutral-200: #d1d1cc;
   --neutral-300: var(--neutral-200);
-  --neutral-400: #9a978d;
-  --neutral-600: #545247;
-  --neutral-800: #262621;
-  --neutral-900: #141412;
+  --neutral-400: #a3a39e;
+  --neutral-600: #666662;
+  --neutral-800: #242424;
+  --neutral-900: #101010;
   --neutral-950: var(--neutral-900);
-  --night-800: #242420;
-  --night-900: #0e0e0e;
-  --yellow-400: #d7c98e;
-  --yellow-500: #a6842e;
-  --yellow-600: #8a6e20;
-  --pink-400: #f7b0cf;
-  --pink-500: #f06aa1;
-  --pink-600: #c52b68;
+  --night-800: #1c1c1c;
+  --night-900: #101010;
+  --lime-300: #f1ff66;
+  --lime-400: #eaff00;
+  --lime-500: #d6e900;
+  --yellow-400: var(--lime-300);
+  --yellow-500: var(--lime-400);
+  --yellow-600: var(--lime-500);
+  --pink-400: var(--lime-300);
+  --pink-500: var(--lime-400);
+  --pink-600: var(--lime-500);
 
   /* Semantic colors */
   --color-bg-primary: var(--neutral-50);
   --color-bg-secondary: var(--neutral-0);
   --color-bg-inverse: var(--neutral-900);
-  --color-bg-accent: var(--yellow-500);
-  --color-bg-accent-secondary: var(--pink-500);
+  --color-bg-accent: var(--lime-400);
+  --color-bg-accent-secondary: var(--lime-400);
   --color-bg-elevated: var(--neutral-0);
   --color-text-primary: var(--neutral-900);
   --color-text-secondary: var(--neutral-600);
   --color-text-inverse: var(--neutral-0);
   --color-text-on-accent: var(--neutral-900);
-  --color-text-accent: var(--pink-600);
-  --color-text-accent-primary: var(--yellow-600);
+  --color-text-accent: var(--neutral-900);
+  --color-text-accent-primary: var(--neutral-900);
   --color-border-default: var(--neutral-200);
   --color-border-strong: var(--neutral-900);
-  --color-focus-ring: var(--pink-600);
+  --color-focus-ring: var(--lime-500);
   --color-icon-default: var(--neutral-900);
   --color-icon-secondary: var(--neutral-600);
 
@@ -100,6 +103,25 @@
   /* Layout */
   --layout-page-gutter: clamp(1.25rem, 6.1vw, 5.5rem);
   --layout-content-max: 79rem;
+
+  /* Figma Sprint 3 variables. Keep semantic aliases above for migrated screens. */
+  --s3-color-surface-canvas: var(--neutral-50);
+  --s3-color-surface-panel: var(--neutral-0);
+  --s3-color-surface-subtle: var(--neutral-50);
+  --s3-color-surface-inverse: var(--neutral-900);
+  --s3-color-accent-primary: var(--lime-400);
+  --s3-color-text-primary: var(--neutral-900);
+  --s3-color-text-secondary: var(--neutral-600);
+  --s3-color-text-inverse: var(--neutral-0);
+  --s3-color-text-on-accent: var(--neutral-900);
+  --s3-color-border-default: var(--neutral-200);
+  --s3-color-border-strong: var(--neutral-900);
+  --s3-radius-control: 0.5rem;
+  --s3-radius-panel: 1rem;
+  --s3-radius-full: 999px;
+  --s3-control-min-size: 2.75rem;
+  --s3-stroke-hairline: 1px;
+  --s3-shadow-dialog: 0 12px 36px rgb(0 0 0 / 18%);
 }
 
 [data-theme='dark'] {
@@ -107,20 +129,29 @@
   --color-bg-primary: var(--night-900);
   --color-bg-secondary: var(--night-800);
   --color-bg-inverse: var(--neutral-0);
-  --color-bg-accent: var(--yellow-400);
-  --color-bg-accent-secondary: var(--pink-400);
+  --color-bg-accent: var(--lime-400);
+  --color-bg-accent-secondary: var(--lime-400);
   --color-bg-elevated: var(--neutral-800);
   --color-text-primary: var(--neutral-0);
   --color-text-secondary: var(--neutral-400);
   --color-text-inverse: var(--neutral-900);
   --color-text-on-accent: var(--neutral-900);
-  --color-text-accent: var(--pink-400);
-  --color-text-accent-primary: var(--yellow-400);
+  --color-text-accent: var(--lime-400);
+  --color-text-accent-primary: var(--lime-400);
   --color-border-default: var(--neutral-600);
   --color-border-strong: var(--neutral-0);
-  --color-focus-ring: var(--pink-400);
+  --color-focus-ring: var(--lime-400);
   --color-icon-default: var(--neutral-0);
   --color-icon-secondary: var(--neutral-400);
+  --s3-color-surface-canvas: var(--night-900);
+  --s3-color-surface-panel: var(--night-800);
+  --s3-color-surface-subtle: #292929;
+  --s3-color-surface-inverse: var(--neutral-0);
+  --s3-color-text-primary: var(--neutral-0);
+  --s3-color-text-secondary: var(--neutral-400);
+  --s3-color-text-inverse: var(--neutral-900);
+  --s3-color-border-default: #454545;
+  --s3-color-border-strong: var(--neutral-0);
 }
 
 @theme inline {

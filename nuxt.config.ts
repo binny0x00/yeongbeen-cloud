@@ -2,6 +2,13 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  alias: {
+    '@admin': './layers/admin',
+    '@content-domain': './layers/content',
+    '@design-system': './layers/design-system',
+    '@engagement': './layers/engagement',
+    '@identity': './layers/identity',
+  },
   app: {
     head: {
       htmlAttrs: { lang: 'ko' },
@@ -14,6 +21,13 @@ export default defineNuxtConfig({
   },
   compatibilityDate: '2025-07-15',
   components: [{ path: '~/components', pathPrefix: false }],
+  extends: [
+    './layers/design-system',
+    './layers/content',
+    './layers/identity',
+    './layers/engagement',
+    './layers/admin',
+  ],
   content: {
     experimental: {
       sqliteConnector: 'native',

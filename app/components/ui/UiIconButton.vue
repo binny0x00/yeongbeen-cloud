@@ -17,7 +17,7 @@ withDefaults(
     :type="type"
     :disabled="disabled"
     :aria-label="label"
-    class="inline-flex size-10 cursor-pointer items-center justify-center rounded-full bg-surface text-ink transition-colors duration-150 hover:bg-accent disabled:cursor-not-allowed disabled:text-ink-muted"
+    class="inline-flex size-11 cursor-pointer items-center justify-center rounded-[var(--s3-radius-control)] bg-surface text-ink transition-colors duration-150 hover:bg-accent disabled:cursor-not-allowed disabled:text-ink-muted"
   >
     <slot />
   </button>

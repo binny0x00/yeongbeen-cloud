@@ -12,7 +12,7 @@ const activeSection = computed(() => {
 </script>
 
 <template>
-  <header class="flex h-10 w-full items-center justify-between desktop:h-12">
+  <header class="flex min-h-11 w-full items-center justify-between desktop:min-h-12">
     <NuxtLink to="/" aria-label="Yeongbeen Cloud 홈" class="type-mono-sm text-ink">
       <span class="desktop:hidden">YB.CLOUD</span>
       <span class="hidden desktop:inline">YEONGBEEN.CLOUD</span>
