@@ -9,6 +9,9 @@
   "scripts": {
     "build": "nuxt build",
     "config:check": "tsx scripts/check-sprint3-config.ts",
+    "content:import": "tsx scripts/import-legacy-content.ts",
+    "content:rollback": "tsx scripts/import-legacy-content.ts --rollback",
+    "content:verify": "tsx scripts/import-legacy-content.ts --verify",
     "db:check": "drizzle-kit check",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
@@ -37,6 +40,8 @@
     "@nuxt/content": "^3.15.2",
     "better-auth": "^1.6.26",
     "drizzle-orm": "^0.45.2",
+    "gray-matter": "^4.0.3",
+    "marked": "^18.0.9",
     "nuxt": "^4.5.1",
     "postgres": "^3.4.9",
     "redis": "^6.2.0",

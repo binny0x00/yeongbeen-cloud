@@ -88,6 +88,7 @@ jobs:
           --health-retries 10
     env:
       DATABASE_URL: postgresql://postgres:postgres@127.0.0.1:5432/yeongbeen
+      OWNER_EMAILS: owner@example.test
       REDIS_URL: redis://127.0.0.1:6379
 
     steps:
@@ -116,6 +117,15 @@ jobs:
 
       - name: Verify PostgreSQL and Redis adapters
         run: pnpm infrastructure:verify
+
+      - name: Verify idempotent content import and rollback
+        run: >-
+          pnpm content:import &&
+          pnpm content:import &&
+          pnpm content:verify &&
+          pnpm content:rollback &&
+          pnpm content:import &&
+          pnpm content:verify
 
   docker:
     name: Docker build

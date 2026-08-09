@@ -37,6 +37,9 @@ export const document = pgTable(
     createdAt: timestamp('created_at', { withTimezone: true }).defaultNow().notNull(),
     id: uuid('id').defaultRandom().primaryKey(),
     kind: documentKindEnum('kind').notNull(),
+    sourceChecksum: text('source_checksum'),
+    sourceImportedAt: timestamp('source_imported_at', { withTimezone: true }),
+    sourceKey: text('source_key'),
     updatedAt: timestamp('updated_at', { withTimezone: true })
       .defaultNow()
       .$onUpdate(() => new Date())
@@ -45,6 +48,7 @@ export const document = pgTable(
   table => [
     index('document_kind_updated_idx').on(table.kind, table.updatedAt),
     index('document_author_idx').on(table.authorId),
+    uniqueIndex('document_source_key_unique').on(table.sourceKey),
   ],
 )
 
