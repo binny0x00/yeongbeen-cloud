@@ -59,9 +59,69 @@ jobs:
       - name: Build application
         run: pnpm build
 
+  infrastructure:
+    name: Infrastructure integration
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_DB: yeongbeen
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d yeongbeen"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+      redis:
+        image: redis:8-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      DATABASE_URL: postgresql://postgres:postgres@127.0.0.1:5432/yeongbeen
+      REDIS_URL: redis://127.0.0.1:6379
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.12.4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Validate generated migrations
+        run: pnpm db:check
+
+      - name: Apply migrations twice
+        run: pnpm db:migrate && pnpm db:migrate
+
+      - name: Verify PostgreSQL and Redis adapters
+        run: pnpm infrastructure:verify
+
   docker:
     name: Docker build
-    needs: quality
+    needs:
+      - quality
+      - infrastructure
     runs-on: ubuntu-latest
     timeout-minutes: 20
 
