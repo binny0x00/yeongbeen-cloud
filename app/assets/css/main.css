@@ -46,12 +46,23 @@
   }
 
   ::selection {
-    background: var(--color-bg-accent-secondary);
+    background: var(--s3-color-accent-primary);
     color: var(--color-text-on-accent);
   }
 }
 
 @layer components {
+  .s3-control {
+    min-height: var(--s3-control-min-size);
+    border-radius: var(--s3-radius-control);
+  }
+
+  .s3-panel {
+    border: var(--s3-stroke-hairline) solid var(--s3-color-border-default);
+    border-radius: var(--s3-radius-panel);
+    background: var(--s3-color-surface-panel);
+  }
+
   .type-display-hero {
     font-family: var(--font-display);
     font-size: var(--font-size-display-hero);

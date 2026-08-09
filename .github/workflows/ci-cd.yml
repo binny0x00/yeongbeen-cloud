@@ -3,11 +3,12 @@ name: CI/CD
 on:
   pull_request:
     branches:
-      - feature/sprint-1-foundation
+      - feature/sprint-3-content-platform
       - develop
       - main
   push:
     branches:
+      - feature/sprint-3-content-platform
       - develop
       - main
   workflow_dispatch:
