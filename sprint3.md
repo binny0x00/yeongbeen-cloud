@@ -11,14 +11,14 @@
 
 ## 기능 PR 순서
 
-1. `feature/s3-01-architecture-system` — Layers, 경계, 디자인 시스템, 설정 문서
-2. `feature/s3-02-persistence-auth` — PostgreSQL, Drizzle, Better Auth, Redis
-3. `feature/s3-03-content-migration` — Markdown·하드코딩 콘텐츠 import
-4. `feature/s3-04-public-experience` — 포트폴리오·게시물·검색·SEO·i18n
-5. `feature/s3-05-editor-media` — 관리자, Tiptap, R2, revision
-6. `feature/s3-06-engagement` — 댓글, 좋아요, 신고, 알림, moderation
-7. `feature/s3-07-ai-assistance` — Responses API 기반 명시적 AI 보조
-8. `test/s3-08-quality-operations` — Docker, E2E, a11y, migration·운영 검증
+1. [완료] `feature/s3-01-architecture-system` — Layers, 경계, 디자인 시스템, 설정 문서
+2. [완료] `feature/s3-02-persistence-auth` — PostgreSQL, Drizzle, Better Auth, Redis
+3. [완료] `feature/s3-03-content-migration` — Markdown·하드코딩 콘텐츠 import
+4. [완료] `feature/s3-04-public-experience` — 포트폴리오·게시물·검색·SEO·i18n
+5. [완료] `feature/s3-05-editor-media` — 관리자, Tiptap, R2, revision
+6. [완료] `feature/s3-06-engagement` — 댓글, 좋아요, 신고, 알림, moderation
+7. [완료] `feature/s3-07-ai-assistance` — Responses API 기반 명시적 AI 보조
+8. [완료] `test/s3-08-quality-operations` — Docker, E2E, a11y, migration·운영 검증
 
 각 브랜치는 통합 브랜치를 기준으로 만들고 Draft PR을 연 뒤 CI·자기 리뷰·문서화를 완료합니다. 통합은 merge commit만 사용하며 공유 브랜치 rebase와 force push를 금지합니다.
 

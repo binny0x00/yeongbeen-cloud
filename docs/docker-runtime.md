@@ -1,58 +1,35 @@
 # Docker 운영 런타임
 
-Nuxt 애플리케이션은 multi-stage Dockerfile에서 빌드하고, 운영 이미지에는 Nitro의 `.output` 결과만 포함한다. 런타임 프로세스는 `node` 사용자로 실행한다.
+Dockerfile은 세 target을 제공합니다.
 
-## 이미지 빌드
+- `tooling`: migration, seed, one-shot worker
+- `build`: Nuxt production build
+- `runtime`: `.output`만 포함하고 비권한 `node` 사용자로 실행
 
 ```bash
 docker build --target runtime -t yeongbeen-cloud:local .
-```
-
-## Compose 실행
-
-기본 포트는 3000이다.
-
-```bash
 docker compose up -d --build
 docker compose ps
-curl http://127.0.0.1:3000/api/health
+curl http://127.0.0.1:3000/api/ready
 ```
 
-다른 포트로 실행할 때는 `PORT`를 지정한다. 호스트와 컨테이너에서 같은 포트를 사용한다.
+Compose의 `migrate`가 PostgreSQL 준비 후 migration과 seed를 마쳐야 `web`이 시작됩니다. PostgreSQL과 Redis는 healthcheck와 영속 volume을 사용합니다.
+
+| 변수                   | 기본값                                             | 설명                      |
+| ---------------------- | -------------------------------------------------- | ------------------------- |
+| `PORT`                 | `3000`                                             | 공개·Nitro listen port    |
+| `COMPOSE_DATABASE_URL` | `postgresql://postgres:postgres@postgres:5432/...` | 컨테이너용 DB override    |
+| `COMPOSE_REDIS_URL`    | `redis://redis:6379`                               | 컨테이너용 Redis override |
+| `BETTER_AUTH_URL`      | `http://localhost:3000`                            | 로컬 인증 origin          |
+| `BETTER_AUTH_SECRET`   | 로컬 전용 안전 기본값                              | staging 전 반드시 교체    |
+| `NUXT_PUBLIC_SITE_URL` | `http://localhost:3000`                            | 로컬 canonical origin     |
+
+호스트의 `DATABASE_URL`을 그대로 컨테이너에 주입하면 `127.0.0.1`이 컨테이너 자신을 가리킬 수 있으므로 Compose 전용 override 이름을 사용합니다. 실제 secret은 이미지에 포함하지 않습니다.
 
 ```bash
-PORT=8080 docker compose up -d --build
-curl http://127.0.0.1:8080/api/health
-```
-
-컨테이너를 종료할 때는 다음 명령을 사용한다.
-
-```bash
+PORT=8080 BETTER_AUTH_URL=http://localhost:8080 docker compose up -d --build
+docker compose --profile operations run --rm operations
 docker compose down
 ```
 
-## 환경변수
-
-| 변수                       | 기본값                    | 설명                                             |
-| -------------------------- | ------------------------- | ------------------------------------------------ |
-| `HOST`                     | `0.0.0.0`                 | 컨테이너 외부 요청을 받기 위한 Nitro listen host |
-| `PORT`                     | `3000`                    | Nitro listen port와 Compose 공개 port            |
-| `NUXT_GITHUB_OWNER`        | `binny0x00`               | GitHub API에서 조회할 소유자                     |
-| `NUXT_GITHUB_REPOSITORIES` | `yeongbeen-cloud`         | 쉼표로 구분한 저장소 목록                        |
-| `NUXT_GITHUB_TOKEN`        | 빈 값                     | 선택적인 GitHub API 인증 토큰                    |
-| `NUXT_PUBLIC_SITE_URL`     | `https://yeongbeen.cloud` | canonical·Open Graph 기준 URL                    |
-
-비밀값은 이미지에 포함하지 않고 Railway 또는 로컬 실행 환경에서 런타임 환경변수로 주입한다.
-
-## 상태 확인
-
-`GET /api/health`는 외부 API나 데이터베이스에 의존하지 않고 프로세스가 요청에 응답할 수 있는지 확인한다.
-
-```json
-{
-  "status": "ok",
-  "timestamp": "2026-08-02T00:00:00.000Z"
-}
-```
-
-Docker와 Compose는 이 endpoint를 사용해 컨테이너 상태를 판정한다.
+`GET /api/health`는 프로세스 liveness, `GET /api/ready`는 PostgreSQL·Redis readiness를 반환합니다.

@@ -9,8 +9,12 @@ const notifications = ref<
 const unread = computed(() => notifications.value.filter(item => !item.readAt).length)
 
 onMounted(async () => {
-  session.value = (await auth.getSession()).data
-  if (session.value?.user) notifications.value = await $fetch('/api/v1/notifications')
+  try {
+    session.value = (await auth.getSession()).data
+    if (session.value?.user) notifications.value = await $fetch('/api/v1/notifications')
+  } catch {
+    session.value = null
+  }
 })
 
 async function toggle(): Promise<void> {

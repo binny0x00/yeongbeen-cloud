@@ -42,6 +42,13 @@ export class RedisAdapter implements CachePort, RateLimitPort {
     await (await getRedis()).del(key)
   }
 
+  async deleteByPrefix(prefix: string): Promise<void> {
+    const redis = await getRedis()
+    for await (const keys of redis.scanIterator({ COUNT: 100, MATCH: `${prefix}*` })) {
+      if (keys.length > 0) await redis.del(keys)
+    }
+  }
+
   async get<T>(key: string): Promise<T | null> {
     const value = await (await getRedis()).get(key)
     return value === null ? null : (JSON.parse(value) as T)

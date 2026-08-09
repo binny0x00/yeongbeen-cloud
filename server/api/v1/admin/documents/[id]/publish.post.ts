@@ -13,5 +13,6 @@ export default defineEventHandler(async event => {
     state: 'PUBLISHED',
   })
   if (!result) throw createError({ statusCode: 404, statusMessage: 'Document not found' })
+  await invalidatePublicContentCache()
   return result
 })

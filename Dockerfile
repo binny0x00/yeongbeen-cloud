@@ -21,6 +21,10 @@ ENV NITRO_PRESET=node-server
 
 RUN pnpm build
 
+FROM dependencies AS tooling
+
+COPY . .
+
 FROM node:22-alpine AS runtime
 
 WORKDIR /app

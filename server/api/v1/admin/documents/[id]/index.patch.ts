@@ -24,5 +24,6 @@ export default defineEventHandler(async event => {
       statusMessage: 'Version conflict',
     })
   }
+  await invalidatePublicContentCache()
   return result.localization
 })
