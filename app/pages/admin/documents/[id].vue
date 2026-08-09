@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { del, get, set } from 'idb-keyval'
 
+import { useAdminDocumentLifecycle } from '@admin/app/composables/useAdminDocumentLifecycle'
+import { useAiEditorApply } from '@admin/app/composables/useAiEditorApply'
 import type {
   AdminDocument,
   AdminLocalization,
@@ -55,7 +57,16 @@ const preview = ref<'390' | '768' | '1200'>('1200')
 const previewTheme = ref<'light' | 'night'>('light')
 const saveTimers: Partial<Record<'ko' | 'en', ReturnType<typeof setTimeout>>> = {}
 const saveQueues: Partial<Record<'ko' | 'en', Promise<boolean>>> = {}
+const manualSaveOnly = new Set<'ko' | 'en'>()
 let initialized = false
+const { apply: applyAi, source: aiSource } = useAiEditorApply({
+  drafts,
+  manualSaveOnly,
+  saveTimers,
+  seoDrafts,
+  status,
+  translate: key => t(key),
+})
 
 function recoveryKey(locale: 'ko' | 'en'): string {
   return `editor-recovery:${id}:${locale}`
@@ -100,6 +111,7 @@ async function persistDraft(locale: 'ko' | 'en'): Promise<boolean> {
       return true
     }
     draft.dirty = false
+    manualSaveOnly.delete(locale)
     status[locale] = `${t('admin.saved')} v${saved.version}`
     await del(recoveryKey(locale))
     return true
@@ -115,6 +127,14 @@ function saveDraft(locale: 'ko' | 'en'): Promise<boolean> {
   saveQueues[locale] = queued
   return queued
 }
+const { publish, restore, schedule } = useAdminDocumentLifecycle({
+  documentId: id,
+  refresh,
+  saveDraft,
+  scheduleAt,
+  status,
+  translate: key => t(key),
+})
 
 for (const locale of ['ko', 'en'] as const) {
   watch(
@@ -128,12 +148,15 @@ for (const locale of ['ko', 'en'] as const) {
     () => {
       if (!initialized) return
       drafts[locale].dirty = true
-      status[locale] = t('admin.unsaved')
+      status[locale] = manualSaveOnly.has(locale)
+        ? t('admin.ai.appliedUnsaved')
+        : t('admin.unsaved')
       void set(
         recoveryKey(locale),
         JSON.parse(JSON.stringify({ ...drafts[locale], seo: seoDrafts[locale] })),
       )
       if (saveTimers[locale]) clearTimeout(saveTimers[locale])
+      if (manualSaveOnly.has(locale)) return
       saveTimers[locale] = setTimeout(() => void saveDraft(locale), 1000)
     },
     { deep: true },
@@ -156,29 +179,6 @@ function applyRecovery(locale: 'ko' | 'en'): void {
     Object.assign(seoDrafts[locale], recovery[locale].seo)
   }
   Reflect.deleteProperty(recovery, locale)
-}
-
-async function publish(locale: 'ko' | 'en'): Promise<void> {
-  if (!(await saveDraft(locale))) return
-  await $fetch(`/api/v1/admin/documents/${id}/publish`, { body: { locale }, method: 'POST' })
-  status[locale] = t('admin.published')
-  await refresh()
-}
-
-async function schedule(locale: 'ko' | 'en'): Promise<void> {
-  if (!(await saveDraft(locale))) return
-  await $fetch(`/api/v1/admin/documents/${id}/schedule`, {
-    body: { locale, scheduledAt: new Date(scheduleAt[locale]).toISOString() },
-    method: 'POST',
-  })
-  status[locale] = t('admin.scheduled')
-  await refresh()
-}
-
-async function restore(revisionId: string): Promise<void> {
-  await $fetch(`/api/v1/admin/documents/${id}/restore`, { body: { revisionId }, method: 'POST' })
-  await refresh()
-  location.reload()
 }
 </script>
 
@@ -270,6 +270,15 @@ async function restore(revisionId: string): Promise<void> {
             </div>
           </details>
         </div>
+        <AiAssistantPanel
+          :document-id="id"
+          :locale="locale"
+          :original-seo-description="seoDrafts[locale].description"
+          :original-seo-title="seoDrafts[locale].title"
+          :original-summary="drafts[locale].summary"
+          :source="aiSource(locale)"
+          @apply="applyAi(locale, $event)"
+        />
         <div class="mx-auto w-full transition-[max-width]" :style="{ maxWidth: `${preview}px` }">
           <RichTextEditor v-model="drafts[locale].contentJson" :locale="locale" />
         </div>

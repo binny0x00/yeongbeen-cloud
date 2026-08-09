@@ -64,6 +64,32 @@
     "hideComment": "Hide comment",
     "approveComment": "Approve comment",
     "blockUser": "Block member",
+    "ai": {
+      "title": "AI writing assistant",
+      "action": "Assistance type",
+      "instruction": "Additional direction (optional)",
+      "privacyTitle": "The author stays in control",
+      "privacyMessage": "Suggestions are never saved or published automatically. Compare, apply, then save explicitly.",
+      "generate": "Generate suggestion",
+      "generating": "Generating…",
+      "before": "Current content",
+      "after": "AI suggestion",
+      "apply": "Apply suggestion",
+      "appliedUnsaved": "AI suggestion applied · save explicitly",
+      "copied": "Copied to clipboard",
+      "errorTitle": "Could not generate a suggestion",
+      "error": "Try again shortly or check configuration and usage limits.",
+      "actions": {
+        "outline": "Outline",
+        "continue": "Continue writing",
+        "rewrite": "Rewrite",
+        "summarize": "Summarize",
+        "tags": "Tags",
+        "seo": "SEO",
+        "alt": "Image alt text",
+        "translate": "KO↔EN translation"
+      }
+    },
     "toolbar": {
       "formatting": "Formatting",
       "bold": "Bold",

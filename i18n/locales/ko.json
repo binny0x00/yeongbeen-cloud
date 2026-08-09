@@ -61,6 +61,32 @@
     "hideComment": "댓글 숨김",
     "approveComment": "댓글 승인",
     "blockUser": "사용자 차단",
+    "ai": {
+      "title": "AI 작성 보조",
+      "action": "도움 유형",
+      "instruction": "추가 요청 (선택)",
+      "privacyTitle": "작성자가 결정합니다",
+      "privacyMessage": "생성 결과는 자동 저장하거나 발행하지 않습니다. 비교 후 적용하고 직접 저장하세요.",
+      "generate": "제안 만들기",
+      "generating": "제안 생성 중…",
+      "before": "현재 내용",
+      "after": "AI 제안",
+      "apply": "제안 적용",
+      "appliedUnsaved": "AI 제안 적용됨 · 직접 저장 필요",
+      "copied": "클립보드에 복사됨",
+      "errorTitle": "제안을 만들지 못했습니다",
+      "error": "잠시 후 다시 시도하거나 설정과 사용량을 확인하세요.",
+      "actions": {
+        "outline": "개요",
+        "continue": "이어쓰기",
+        "rewrite": "재작성",
+        "summarize": "요약",
+        "tags": "태그",
+        "seo": "SEO",
+        "alt": "이미지 대체 텍스트",
+        "translate": "KO↔EN 번역"
+      }
+    },
     "toolbar": {
       "formatting": "서식 도구",
       "bold": "굵게",

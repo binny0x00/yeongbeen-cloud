@@ -124,6 +124,9 @@ jobs:
       - name: Verify comments, likes, and notifications
         run: pnpm engagement:verify
 
+      - name: Verify AI usage accounting and privacy logging
+        run: pnpm ai:verify
+
       - name: Verify idempotent content import and rollback
         run: >-
           pnpm content:import &&
