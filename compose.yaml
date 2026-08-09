@@ -30,18 +30,39 @@ services:
     volumes:
       - redis-data:/data
 
+  migrate:
+    build:
+      context: .
+      target: tooling
+    command: ['sh', '-c', 'pnpm db:migrate && pnpm db:seed']
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: ${COMPOSE_DATABASE_URL:-postgresql://postgres:postgres@postgres:5432/yeongbeen}
+    image: yeongbeen-cloud-tooling:local
+    restart: 'no'
+
   web:
     build:
       context: .
       target: runtime
     environment:
-      DATABASE_URL: ${DATABASE_URL:-postgresql://postgres:postgres@postgres:5432/yeongbeen}
+      BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET:-local-only-change-before-staging-32}
+      BETTER_AUTH_URL: ${BETTER_AUTH_URL:-http://localhost:3000}
+      DATABASE_URL: ${COMPOSE_DATABASE_URL:-postgresql://postgres:postgres@postgres:5432/yeongbeen}
+      GITHUB_CLIENT_ID: ${GITHUB_CLIENT_ID:-}
+      GITHUB_CLIENT_SECRET: ${GITHUB_CLIENT_SECRET:-}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:-}
       HOST: 0.0.0.0
+      NUXT_PUBLIC_SITE_URL: ${NUXT_PUBLIC_SITE_URL:-http://localhost:3000}
+      OWNER_EMAILS: ${OWNER_EMAILS:-sprint3-seed@local.invalid}
       PORT: ${PORT:-3000}
-      REDIS_URL: ${REDIS_URL:-redis://redis:6379}
+      REDIS_URL: ${COMPOSE_REDIS_URL:-redis://redis:6379}
     depends_on:
-      postgres:
-        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
       redis:
         condition: service_healthy
     image: yeongbeen-cloud:local
@@ -58,6 +79,28 @@ services:
       timeout: 5s
       start_period: 10s
       retries: 3
+
+  operations:
+    profiles: ['operations']
+    build:
+      context: .
+      target: tooling
+    command: ['pnpm', 'operations:run']
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: ${COMPOSE_DATABASE_URL:-postgresql://postgres:postgres@postgres:5432/yeongbeen}
+      R2_ACCESS_KEY_ID: ${R2_ACCESS_KEY_ID:-}
+      R2_ACCOUNT_ID: ${R2_ACCOUNT_ID:-}
+      R2_BUCKET: ${R2_BUCKET:-}
+      R2_PUBLIC_BASE_URL: ${R2_PUBLIC_BASE_URL:-}
+      R2_SECRET_ACCESS_KEY: ${R2_SECRET_ACCESS_KEY:-}
+      REDIS_URL: ${COMPOSE_REDIS_URL:-redis://redis:6379}
+    image: yeongbeen-cloud-tooling:local
+    restart: 'no'
 
 volumes:
   postgres-data:

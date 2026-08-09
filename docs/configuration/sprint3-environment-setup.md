@@ -46,3 +46,5 @@ https://yeongbeen.cloud/api/auth/callback/github
 Production 값은 Sprint 3의 `main` 병합 승인이 내려진 뒤에만 활성화합니다.
 
 AI 비용 단가 변수는 비밀값이 아니며 선택 설정입니다. 비어 있으면 토큰 사용량은 기록하되 추정 비용은 `null`로 보존합니다. 가격은 저장소에 고정하지 않고 배포 환경 변수로 관리해 모델 가격 변경에 대응합니다. AI 요청은 원문·생성문을 사용량 로그에 저장하지 않으며 `store:false`로 전송합니다.
+
+`E2E_TESTING=1`은 GitHub Actions의 폐기 가능한 테스트 DB에서만 Turnstile을 대체하는 내부 플래그입니다. `.env.example`, Railway staging, production에는 설정하지 않습니다.

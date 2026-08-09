@@ -12,5 +12,6 @@ export default defineEventHandler(async event => {
     userId: session.user.id,
   })
   if (!result) throw createError({ statusCode: 404, statusMessage: 'Revision not found' })
+  await invalidatePublicContentCache()
   return result
 })

@@ -4,7 +4,7 @@ const baseURL = 'http://127.0.0.1:4173'
 
 export default defineConfig({
   forbidOnly: Boolean(process.env.CI),
-  fullyParallel: true,
+  fullyParallel: false,
   projects: [
     {
       name: 'mobile-390',
@@ -38,15 +38,16 @@ export default defineConfig({
   reporter: process.env.CI ? 'github' : 'list',
   retries: process.env.CI ? 2 : 0,
   testDir: './test/e2e',
+  timeout: 45_000,
   use: {
     baseURL,
     screenshot: 'only-on-failure',
     trace: 'on-first-retry',
   },
   webServer: {
-    command: 'pnpm dev --host 127.0.0.1 --port 4173',
+    command: 'pnpm build && HOST=127.0.0.1 PORT=4173 pnpm preview',
     reuseExistingServer: !process.env.CI,
-    timeout: 120_000,
+    timeout: 180_000,
     url: baseURL,
   },
 })

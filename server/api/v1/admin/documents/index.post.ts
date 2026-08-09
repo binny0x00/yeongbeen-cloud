@@ -11,8 +11,10 @@ export default defineEventHandler(async event => {
       statusMessage: 'Invalid document',
     })
   setResponseStatus(event, 201)
-  return new CreateDocument(adminDocumentRepository).execute({
+  const result = await new CreateDocument(adminDocumentRepository).execute({
     ...parsed.data,
     authorId: session.user.id,
   })
+  await invalidatePublicContentCache()
+  return result
 })

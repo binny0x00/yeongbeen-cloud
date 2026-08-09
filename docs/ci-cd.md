@@ -1,18 +1,18 @@
 # GitHub Actions와 Railway 배포
 
-Pull Request에서는 코드 품질과 Docker 이미지 빌드를 검증하고, 장기 브랜치에 반영된 커밋만 Railway에 배포한다.
+Pull Request에서는 코드 품질, PostgreSQL·Redis 통합, E2E, Docker 이미지 빌드를 검증하고, 장기 브랜치에 반영된 커밋만 Railway에 배포한다.
 
 ## 브랜치와 배포 환경
 
-| 이벤트                | GitHub Actions 작업                  | Railway 환경 |
-| --------------------- | ------------------------------------ | ------------ |
-| Pull Request          | lint, format, typecheck, test, build | 배포 안 함   |
-| Pull Request          | Docker runtime 이미지 빌드           | 배포 안 함   |
-| `develop` push        | 모든 CI 통과 후 Railway 배포         | staging      |
-| `main` push           | 모든 CI 통과 후 Railway 배포         | production   |
-| `feature/*` 직접 push | 실행 안 함                           | 배포 안 함   |
+| 이벤트                              | GitHub Actions 작업                  | Railway 환경 |
+| ----------------------------------- | ------------------------------------ | ------------ |
+| Sprint 3·develop·main Pull Request  | quality, infrastructure, E2E, Docker | 배포 안 함   |
+| `feature/sprint-3-content-platform` | 전체 CI                              | 배포 안 함   |
+| `develop` push                      | 전체 CI 통과 후 Railway 배포         | staging      |
+| `main` push                         | 전체 CI 통과 후 Railway 배포         | production   |
+| 그 외 `feature/*` 직접 push         | 실행 안 함                           | 배포 안 함   |
 
-Sprint 작업은 `feature/sprint-1-foundation`에서 통합한다. Sprint 검증이 끝나면 `develop`로 병합해 staging에서 확인하고, 첫 운영 릴리스가 준비됐을 때 `main`으로 승격한다.
+Sprint 3 작업은 `feature/sprint-3-content-platform`에서 통합합니다. 현재는 로컬 통합 실행까지만 수행하고, 사용자 승인 전에는 `develop`, `main`, production을 변경하지 않습니다.
 
 ## GitHub Environment
 
@@ -48,9 +48,11 @@ Railway는 런타임에 `PORT`를 주입하며 애플리케이션은 이 값을 
 
 ## 브랜치 보호 권장값
 
-`develop`과 `main`에는 직접 push하지 않고 Pull Request를 사용한다. 보호 규칙에는 다음 check를 필수로 지정한다.
+Sprint 3 통합 브랜치, `develop`, `main`에는 직접 push하지 않고 Pull Request를 사용합니다. 보호 규칙에는 다음 check를 필수로 지정합니다.
 
 - `Code quality`
+- `Infrastructure integration`
+- `End-to-end quality`
 - `Docker build`
 
 `production` GitHub Environment에는 필요할 경우 배포 승인자를 추가한다. 개인 저장소에서 승인자를 본인 한 명으로 제한하면 self-review 정책 때문에 배포가 막힐 수 있으므로 실제 협업자가 생긴 뒤 적용한다.

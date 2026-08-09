@@ -115,6 +115,9 @@ jobs:
       - name: Apply migrations twice
         run: pnpm db:migrate && pnpm db:migrate
 
+      - name: Seed deterministic Sprint 3 fixtures
+        run: pnpm db:seed
+
       - name: Verify PostgreSQL and Redis adapters
         run: pnpm infrastructure:verify
 
@@ -127,6 +130,15 @@ jobs:
       - name: Verify AI usage accounting and privacy logging
         run: pnpm ai:verify
 
+      - name: Verify scheduled publishing and orphan cleanup
+        run: pnpm operations:verify
+
+      - name: Verify public read p95 budget
+        run: pnpm performance:verify
+
+      - name: Verify isolated migration dry-run and rollback
+        run: pnpm db:rollback:verify
+
       - name: Verify idempotent content import and rollback
         run: >-
           pnpm content:import &&
@@ -136,11 +148,88 @@ jobs:
           pnpm content:import &&
           pnpm content:verify
 
+  e2e:
+    name: End-to-end quality
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_DB: yeongbeen
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d yeongbeen"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+      redis:
+        image: redis:8-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      BETTER_AUTH_SECRET: e2e-better-auth-secret-at-least-32
+      BETTER_AUTH_URL: http://127.0.0.1:4173
+      DATABASE_URL: postgresql://postgres:postgres@127.0.0.1:5432/yeongbeen
+      E2E_TESTING: '1'
+      GITHUB_CLIENT_ID: e2e-github-client
+      GITHUB_CLIENT_SECRET: e2e-github-secret
+      GOOGLE_CLIENT_ID: e2e-google-client
+      GOOGLE_CLIENT_SECRET: e2e-google-secret
+      NUXT_PUBLIC_SITE_URL: http://127.0.0.1:4173
+      OWNER_EMAILS: sprint3-seed@local.invalid
+      REDIS_URL: redis://127.0.0.1:6379
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.12.4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Apply migrations and seed E2E owner
+        run: pnpm db:migrate && pnpm db:seed:e2e
+
+      - name: Install Chromium
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Run KO/EN, authoring, engagement, visual, and axe flows
+        run: pnpm test:e2e
+
+      - name: Upload Playwright screenshots, axe results, and traces
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-results-${{ github.sha }}
+          path: test-results
+          if-no-files-found: ignore
+          retention-days: 14
+
   docker:
     name: Docker build
     needs:
       - quality
       - infrastructure
+      - e2e
     runs-on: ubuntu-latest
     timeout-minutes: 20
 

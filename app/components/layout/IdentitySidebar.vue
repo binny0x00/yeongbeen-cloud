@@ -1,6 +1,8 @@
 <script setup lang="ts">
 const localePath = useLocalePath()
+const switchLocalePath = useSwitchLocalePath()
 const route = useRoute()
+const { locale } = useI18n()
 const sections = [
   { label: 'OVERVIEW', path: '/' },
   { label: 'PORTFOLIO', path: '/portfolio' },
@@ -61,6 +63,16 @@ const sections = [
       </nav>
 
       <div class="identity-sidebar__footer mt-auto flex flex-col gap-5 pt-10">
+        <div class="flex min-h-11 items-center gap-5">
+          <NuxtLink
+            :to="switchLocalePath(locale === 'ko' ? 'en' : 'ko')"
+            class="type-label inline-flex min-h-11 items-center text-ink-muted hover:text-ink"
+            :aria-label="locale === 'ko' ? 'Switch to English' : '한국어로 전환'"
+          >
+            LANGUAGE / {{ locale === 'ko' ? 'EN' : 'KO' }}
+          </NuxtLink>
+          <NotificationBell />
+        </div>
         <nav aria-label="외부 링크" class="flex flex-wrap gap-x-4 gap-y-2">
           <a
             href="https://github.com/binny0x00"
