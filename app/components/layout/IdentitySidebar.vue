@@ -1,48 +1,13 @@
 <script setup lang="ts">
-type SectionId = 'about' | 'contact' | 'experience' | 'projects' | 'writing'
-
-const sections: ReadonlyArray<{ id: SectionId; label: string }> = [
-  { id: 'about', label: 'OVERVIEW' },
-  { id: 'experience', label: 'EXPERIENCE' },
-  { id: 'projects', label: 'PROJECTS' },
-  { id: 'writing', label: 'NOTES' },
-  { id: 'contact', label: 'CONTACT' },
+const localePath = useLocalePath()
+const route = useRoute()
+const sections = [
+  { label: 'OVERVIEW', path: '/' },
+  { label: 'PORTFOLIO', path: '/portfolio' },
+  { label: 'POSTS', path: '/posts' },
+  { label: 'ABOUT', path: '/about' },
+  { label: 'CONTACT', path: '/#contact' },
 ]
-
-const activeSection = ref<SectionId>('about')
-let sectionObserver: IntersectionObserver | undefined
-
-function setActiveSection(section: SectionId) {
-  activeSection.value = section
-}
-
-onMounted(() => {
-  if (!('IntersectionObserver' in window)) return
-
-  sectionObserver = new IntersectionObserver(
-    entries => {
-      const visibleEntry = entries
-        .filter(entry => entry.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
-
-      if (visibleEntry?.target.id) {
-        activeSection.value = visibleEntry.target.id as SectionId
-      }
-    },
-    {
-      rootMargin: '-18% 0px -62% 0px',
-      threshold: [0, 0.15, 0.4],
-    },
-  )
-
-  sections.forEach(({ id }) => {
-    const section = document.getElementById(id)
-
-    if (section) sectionObserver?.observe(section)
-  })
-})
-
-onBeforeUnmount(() => sectionObserver?.disconnect())
 </script>
 
 <template>
@@ -74,26 +39,25 @@ onBeforeUnmount(() => sectionObserver?.disconnect())
       <div class="identity-sidebar__divider my-7 h-0.5 w-[88px] bg-accent" aria-hidden="true" />
 
       <nav aria-label="페이지 섹션" class="flex flex-col">
-        <a
+        <NuxtLink
           v-for="section in sections"
-          :key="section.id"
-          :href="`#${section.id}`"
-          :aria-current="activeSection === section.id ? 'location' : undefined"
+          :key="section.path"
+          :to="localePath(section.path)"
+          :aria-current="route.path === localePath(section.path) ? 'page' : undefined"
           class="identity-sidebar__nav-link group flex min-h-11 items-center gap-4 font-mono text-[13px] font-semibold tracking-[0.08em] text-ink-muted transition-colors duration-150 hover:text-ink"
-          :class="activeSection === section.id && 'text-ink'"
-          @click="setActiveSection(section.id)"
+          :class="route.path === localePath(section.path) && 'text-ink'"
         >
           <span
             aria-hidden="true"
             class="h-0.5 transition-[width,background-color] duration-200"
             :class="
-              activeSection === section.id
+              route.path === localePath(section.path)
                 ? 'w-8 bg-accent'
                 : 'w-4 bg-border group-hover:w-6 group-hover:bg-accent'
             "
           />
           {{ section.label }}
-        </a>
+        </NuxtLink>
       </nav>
 
       <div class="identity-sidebar__footer mt-auto flex flex-col gap-5 pt-10">
@@ -113,10 +77,10 @@ onBeforeUnmount(() => sectionObserver?.disconnect())
             EMAIL ↗
           </a>
           <NuxtLink
-            to="/resume"
+            :to="localePath('/about')"
             class="type-mono-sm text-ink-muted transition-colors hover:text-ink"
           >
-            RÉSUMÉ ↗
+            ABOUT ↗
           </NuxtLink>
         </nav>
 

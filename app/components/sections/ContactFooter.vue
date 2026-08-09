@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const currentYear = new Date().getFullYear()
+const localePath = useLocalePath()
 </script>
 
 <template>
@@ -44,7 +45,7 @@ const currentYear = new Date().getFullYear()
       <p class="type-mono-sm">© {{ currentYear }} YEONGBEEN CHOI</p>
       <nav aria-label="푸터 링크" class="flex items-center gap-6 text-ink">
         <UiTextLink to="https://github.com/binny0x00" external>GitHub</UiTextLink>
-        <UiTextLink to="/resume" :show-arrow="false">Resume</UiTextLink>
+        <UiTextLink :to="localePath('/about')" :show-arrow="false">About</UiTextLink>
       </nav>
     </div>
   </footer>

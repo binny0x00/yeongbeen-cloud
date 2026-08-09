@@ -14,12 +14,13 @@ describe('IdentitySidebar', () => {
     expect(wrapper.get('aside').attributes('aria-label')).toBe('개발자 정보 및 섹션 탐색')
     expect(navLinks.map(link => link.text())).toEqual([
       'OVERVIEW',
-      'EXPERIENCE',
-      'PROJECTS',
-      'NOTES',
+      'PORTFOLIO',
+      'POSTS',
+      'ABOUT',
       'CONTACT',
     ])
-    expect(navLinks[0]?.attributes('aria-current')).toBe('location')
+    expect(navLinks[1]?.attributes('href')).toContain('/portfolio')
+    expect(navLinks[2]?.attributes('href')).toContain('/posts')
     expect(wrapper.get('a[href="https://github.com/binny0x00"]').attributes('target')).toBe(
       '_blank',
     )

@@ -1,0 +1,24 @@
+{
+  "nav": { "portfolio": "Portfolio", "posts": "Posts", "about": "About", "login": "Sign in" },
+  "home": {
+    "eyebrow": "FRONTEND ENGINEER · PRODUCT BUILDER",
+    "title": "Turning questions into products and experience into stories.",
+    "description": "A bilingual content platform connecting Yeongbeen Choi’s work since university with project and study notes.",
+    "portfolioCta": "View portfolio",
+    "postsCta": "Read posts"
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "description": "Explore projects, career milestones, awards, and activities by time and topic."
+  },
+  "posts": {
+    "title": "Posts",
+    "description": "Project retrospectives, studies, and technical notes."
+  },
+  "common": {
+    "search": "Search",
+    "empty": "No content matches these filters yet.",
+    "loadMore": "Load more",
+    "back": "Back to list"
+  }
+}

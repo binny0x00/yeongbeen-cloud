@@ -6,7 +6,7 @@ withDefaults(
   }>(),
   {
     githubUrl: 'https://github.com/binny0x00',
-    resumeUrl: '/resume',
+    resumeUrl: '/about',
   },
 )
 
