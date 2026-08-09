@@ -8,6 +8,7 @@
   },
   "scripts": {
     "build": "nuxt build",
+    "ai:verify": "tsx scripts/verify-ai-assistance.ts",
     "config:check": "tsx scripts/check-sprint3-config.ts",
     "content:import": "tsx scripts/import-legacy-content.ts",
     "content:rollback": "tsx scripts/import-legacy-content.ts --rollback",

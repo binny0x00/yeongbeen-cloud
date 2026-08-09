@@ -23,6 +23,8 @@
 | `R2_BUCKET`, `R2_PUBLIC_BASE_URL`          | R2 bucket과 공개 custom domain                 | 로컬/GitHub/Railway          | 업로드 결과 HEAD 요청                      |
 | `OPENAI_API_KEY`                           | OpenAI project service account, 해당 project만 | 로컬/GitHub/Railway          | AI assist smoke test 후 이전 key 폐기      |
 | `OPENAI_MODEL`                             | 기본값 `gpt-5.6-terra`                         | 로컬/GitHub/Railway          | model 응답과 usage log 확인                |
+| `OPENAI_INPUT_COST_USD_PER_MILLION`        | 선택값, 대상 모델의 입력 100만 토큰 USD 단가   | 로컬/GitHub/Railway Variable | 공식 가격 변경 시 갱신 후 비용 로그 확인   |
+| `OPENAI_OUTPUT_COST_USD_PER_MILLION`       | 선택값, 대상 모델의 출력 100만 토큰 USD 단가   | 로컬/GitHub/Railway Variable | 공식 가격 변경 시 갱신 후 비용 로그 확인   |
 | `NUXT_PUBLIC_SITE_URL`                     | 서비스 canonical origin                        | 로컬/GitHub/Railway Variable | canonical URL 확인                         |
 | `NUXT_PUBLIC_TURNSTILE_SITE_KEY`           | Cloudflare Turnstile widget                    | 로컬/GitHub/Railway Variable | 브라우저 challenge 확인                    |
 | `TURNSTILE_SECRET_KEY`                     | Cloudflare Turnstile server secret             | 로컬/GitHub/Railway Secret   | siteverify 후 이전 secret 폐기             |
@@ -42,3 +44,5 @@ https://yeongbeen.cloud/api/auth/callback/github
 ```
 
 Production 값은 Sprint 3의 `main` 병합 승인이 내려진 뒤에만 활성화합니다.
+
+AI 비용 단가 변수는 비밀값이 아니며 선택 설정입니다. 비어 있으면 토큰 사용량은 기록하되 추정 비용은 `null`로 보존합니다. 가격은 저장소에 고정하지 않고 배포 환경 변수로 관리해 모델 가격 변경에 대응합니다. AI 요청은 원문·생성문을 사용량 로그에 저장하지 않으며 `store:false`로 전송합니다.

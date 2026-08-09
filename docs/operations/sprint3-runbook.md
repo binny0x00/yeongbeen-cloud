@@ -7,6 +7,8 @@
 3. `pnpm db:migrate`와 `pnpm db:seed`를 실행한다.
 4. `curl http://127.0.0.1:3000/api/ready`에서 DB·Redis 상태를 확인한다.
 5. `/ko`, `/en`, OAuth 로그인, 초안 저장·복구, 발행, 댓글, 좋아요, AI 보조를 순서대로 확인한다.
+6. AI 제안이 비교 화면에만 나타나고 명시적 적용 뒤에도 수동 저장 전까지 DB 버전이 바뀌지 않는지 확인한다.
+7. `ai_usage`에는 prompt 버전·토큰·추정 비용만 있고 원문과 생성문이 없는지 확인한다.
 
 ## Migration과 seed
 
